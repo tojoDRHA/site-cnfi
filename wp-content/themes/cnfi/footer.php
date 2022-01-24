@@ -6,11 +6,11 @@
                     <div class="textwidget custom-html-widget">
                         <div class="card">
                             <h3 id="ftitle">
-                                Contacts
+                                <?php echo  pll_e("Contacts"); ?>
                             </h3>
                             <div>
                                 <span class="fa fa-rounded fa-map-marker"></span>
-                                &nbsp; 21-23, Rue Rainitovo Antsahavola Antananarivo
+                                &nbsp; 21, Rue Rainitovo Antsahavola Antananarivo
                             </div>
                             <div>
                                 <span class="fa fa-rounded fa-phone"></span>
@@ -37,23 +37,13 @@
                     <div class="textwidget custom-html-widget">
                         <div class="card">
                             <h3 id="ftitle">
-                                Liens Utiles
+                                <?php echo pll_e("Liens Utiles"); ?>
                             </h3>
-                            <div>
-                                <a target="_blank" href="https://www.banky-foibe.mg/" rel="noopener noreferrer"> <span class="fa fa-rounded fa-chevron-right"></span>&nbsp;Banque Central De Madagascar </a>
-                            </div>
-                            <div>
-                                <a href="#"> <span class="fa fa-rounded fa-chevron-right"></span>&nbsp;DGGFPE </a>
-                            </div>
-                            <div>
-                                <a target="_blank" href="https://www.douanes.mg/" rel="noopener noreferrer"> <span class="fa fa-rounded fa-chevron-right"></span>&nbsp;Direction Générale des Douanes </a>
-                            </div>
-                            <div>
-                                <a target="_blank" href="https://www.impots.mg/" rel="noopener noreferrer"> <span class="fa fa-rounded fa-chevron-right"></span>&nbsp;Direction Générale des Impots </a>
-                            </div>
-                            <div>
-                                <a target="_blank" href="https://www.tresorpublic.mg/" rel="noopener noreferrer"> <span class="fa fa-rounded fa-chevron-right"></span>&nbsp;Direction Générale du Budjet </a>
-                            </div>
+							<?php
+								wp_nav_menu(array(
+									'menu'    => 16, //menu id
+								));
+							?>
                         </div>
                     </div>
                 </div>
@@ -63,14 +53,12 @@
             <div class="footer-widget">
                 <div id="custom_html-6" class="widget_text fwidget et_pb_widget widget_custom_html">
                     <div class="textwidget custom-html-widget">
-                        <div class="card">
+						<div class="card">
                             <h3 id="ftitle">
-                                Cours de Change
+                                <?php echo  pll_e("Cours de Change"); ?>
                             </h3>
                             <div>
-                                1 EUR = 4148 Ariary
-                                <br />
-                                1 USD = 3800 Ariary
+                                <?php getDevise(); ?>
                             </div>
                         </div>
                     </div>
@@ -81,8 +69,14 @@
         </div>
         <!-- #footer-widgets -->
     </div>
-    <!-- .container -->
+	<script>
+		AOS.init({   
+			delay: 0,
+			duration: 1500
+		});
 
+    </script>
+    <!-- .container -->
     <div id="footer-bottom">
         <div class="container clearfix">
             <div id="footer-info">CNFI</div>
@@ -90,3 +84,57 @@
         <!-- .container -->
     </div>
 </footer>
+<!-- #main-footer --> </div>
+      <!-- #et-main-area --> </div>
+    <!-- #page-container -->
+    <style type="text/css" id="et-builder-advanced-style">
+				
+
+	</style>
+    <style type="text/css" id="et-builder-page-custom-style">
+				 .et_pb_bg_layout_dark { color: #ffffff !important; } .page.et_pb_pagebuilder_layout #main-content { background-color: rgba(255,255,255,0); } .et_pb_section { background-color: #ffffff; }
+	</style>
+	<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/includes/builder/scripts/frontend-builder-global-functions591a.js?ver=3.0.51"></script>
+    <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/includes/builder/scripts/jquery.mobile.custom.min591a.js?ver=3.0.51"></script>
+    <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/custom591a.js?ver=3.0.51"></script>
+    <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/includes/builder/scripts/jquery.fitvids591a.js?ver=3.0.51"></script>
+    <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/includes/builder/scripts/waypoints.min591a.js?ver=3.0.51"></script>
+    <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/includes/builder/scripts/jquery.magnific-popup591a.js?ver=3.0.51"></script>
+	<script src="<?php echo WP_CONTENT_URL?>/themes/cnfi/js/chaty-pro-front.js"></script>
+	<script src="<?php echo WP_CONTENT_URL?>/themes/cnfi/js/litespeed.js"></script> 
+	<script src="<?php echo WP_CONTENT_URL?>/themes/cnfi/js/litespeed-media.js"></script>
+    <script type="text/javascript">
+/* <![CDATA[ */
+var et_pb_custom = {};
+/* ]]> */
+</script>
+<script>
+    $(document).ready(function($) {
+      /************ start owl-demo2 *****************/
+      var owl2 = jQuery("#owl-demo2");
+
+      owl2.owlCarousel({
+
+      items : 1, //10 items above 1000px browser width
+      itemsDesktop :[1100,1], //5 items between 1000px and 901px
+      itemsDesktopSmall : [1000,1], // 3 items betweem 900px and 601px
+      itemsTablet: [600,1], //2 items between 600 and 0;
+      itemsMobile : [400,1] // itemsMobile disabled - inherit from itemsTablet option
+      
+      });
+
+      // Custom Navigation Events
+      $(".owl2 .next").click(function(){
+        owl2.trigger('owl.next');
+      })
+      $(".owl2 .prev").click(function(){
+        owl2.trigger('owl.prev');
+      })
+      
+      /************ end owl-demo1 *****************/
+    });
+</script>
+	<script src="<?php echo get_template_directory_uri(); ?>/js/owl.carousel.js"></script>
+    <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/includes/builder/scripts/frontend-builder-scripts591a.js?ver=3.0.51"></script>
+  </body>
+</html>

@@ -1,0 +1,61 @@
+
+#widget {
+    display: inline-block;
+    height: 150px;
+    overflow: hidden;
+    padding: 0 0 0 4px;
+    line-height: 14px;
+    position: relative
+}
+
+.jour {
+    width: 240px;
+    height: 250px;
+    overflow: hidden;
+    position: relative;
+    float: left
+}
+
+.date {
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    left: 10px
+}
+
+.icone-meteo {
+    position: absolute;
+    top: 12px;
+    right: 11px
+}
+
+.temperatures {
+    position: absolute;
+    top: 32px;
+    left: 10px;
+    line-height: 18px
+}
+
+.t_max {
+    font-size: 18px;
+    vertical-align: middle
+}
+
+.informations {
+    position: absolute;
+    font-weight: normal;
+    font-size: 12px;
+    top: 63px;
+    left: 10px;
+    width: 142px
+}
+
+.icone-meteo.moyen {
+    width: 50px;
+    height: 50px;
+    display: inline-block
+}
+
+.icone-meteo.moyen.p1 {
+    background: url(../../icones/1/sprite1_icones_moyens.png) no-repeat
+}

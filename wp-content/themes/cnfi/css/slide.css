@@ -1,0 +1,135 @@
+.postContainer,
+#sliderArticle {
+    margin-bottom: 30px;
+	background-color: #fff;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, .3);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, .3);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, .3)
+}
+
+#sliderArticle figure {
+    position: relative;
+    margin-bottom: 0;
+    width: 100%;
+    height: 375px;
+    overflow: hidden
+}
+
+#sliderArticle figure img {
+    height: 100%;
+    position: absolute;
+    left: -50%;
+    top: -50%;
+    -webkit-transform: translate(50%, 50%);
+    -moz-transform: translate(50%, 50%);
+    -ms-transform: translate(50%, 50%);
+    -o-transform: translate(50%, 50%);
+    transform: translate(50%, 50%);
+    width: auto
+}
+
+#sliderArticle figure .img-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    -webkit-transform: scale(0);
+    -moz-transform: scale(0);
+    -ms-transform: scale(0);
+    -o-transform: scale(0);
+    transform: scale(0);
+    -webkit-transition: transform .3s;
+    -moz-transition: transform .3s;
+    -ms-transition: transform .3s;
+    -o-transition: transform .3s;
+    transition: transform .3s
+}
+
+#sliderArticle figure .img-link a {
+    border: 3px solid #fff;
+    width: 50px;
+    height: 50px;
+    color: #fff;
+    display: block;
+    text-align: center;
+    font-size: 50px;
+    line-height: 40px
+}
+
+#sliderArticle figure:hover .img-link {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1)
+}
+
+#sliderArticle .article-dest {
+    padding: 20px
+}
+
+#sliderArticle .article-dest h3 {
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 20px;
+    font-weight: 700
+}
+
+#sliderArticle .article-dest h3 a {
+    font-family: "Roboto Condensed", sans-serif;
+    color: #4775cd
+}
+
+#sliderArticle .article-dest p a {
+    color: #757170
+}
+
+#sliderArticle .slick-dots {
+    display: block;
+    width: 100%;
+    padding: 0 20px 20px;
+    text-align: center
+}
+
+#sliderArticle .slick-dots li {
+    display: inline-block
+}
+
+#sliderArticle .slick-dots li button {
+    font-size: 0;
+    line-height: 0;
+    display: block;
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+    cursor: pointer;
+    color: transparent;
+    border: 0;
+    outline: none;
+    background: transparent;
+    position: relative
+}
+
+#sliderArticle .slick-dots li button:before {
+    font-family: "slick";
+    font-size: 6px;
+    line-height: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    content: "•";
+    text-align: center;
+    opacity: .25;
+    color: #000;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #757170;
+    border-radius: 10px
+}
+
+#sliderArticle .slick-dots li.slick-active button:before {
+    opacity: 1
+}

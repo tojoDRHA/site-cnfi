@@ -1,0 +1,64 @@
+.chaty-widget-css #wechat-qr-code {
+            right: {
+                104
+            }
+            px;
+            left:auto;
+        }
+
+        .chaty-widget-css .chaty-widget,
+        .chaty-widget-css .chaty-widget .get,
+        .chaty-widget-css .chaty-widget .get a {
+            width: 62px;
+        }
+
+        .chaty-widget-css .facustom-icon {
+            width: 54px;
+            line-height: 54px;
+            height: 54px;
+            font-size: 27px;
+        }
+
+        .chaty-widget-css img {
+            width: 54px;
+            line-height: 54px;
+            height: 54px;
+            object-fit: cover;
+        }
+
+        .chaty-widget-css .i-trigger .chaty-widget-i-title {
+            color: #333333 !important;
+            background: #ffffff !important;
+        }
+
+        .chaty-widget-css .i-trigger .chaty-widget-i:not(.no-tooltip):before {
+            border-color: transparent transparent transparent #ffffff !important;
+        }
+
+        .chaty-widget-css.chaty-widget.chaty-widget-is-right .i-trigger .chaty-widget-i:not(.no-tooltip):before {
+            border-color: transparent #ffffff transparent transparent !important;
+        }
+
+        .chaty-widget-css .facustom-icon.chaty-btn-instagram {
+            background-color: #454545
+        }
+
+        .chaty-widget-css .chaty-instagram .color-element {
+            fill: #454545
+        }
+
+        .chaty-widget-css .chaty-instagram a {
+            background: #454545
+        }
+
+        .chaty-widget-css .facustom-icon.chaty-btn-contact_us {
+            background-color: #ffcc66
+        }
+
+        .chaty-widget-css .chaty-contact_us .color-element {
+            fill: #ffcc66
+        }
+
+        .chaty-widget-css .chaty-contact_us a {
+            background: #ffcc66
+        }

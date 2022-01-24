@@ -36,15 +36,27 @@ require_once ( get_template_directory() . '/inc/GlobalsInc.php' );
 require_once ( get_template_directory() . '/inc/CustomOptions.php' );
 require_once ( get_template_directory() . '/inc/CustomPostType.php' );
 require_once ( get_template_directory() . '/inc/CustomShortcodes.php' );
+require_once ( get_template_directory() . '/inc/Traduction.php' );
+require_once ( get_template_directory() . '/inc/CustomFunctions.php' );
 
 define( 'ID_ARTICLLE_CV', 109 );
 define( 'ID_ARTICLLE_DOCUMENTATION', 113 );
+
+remove_filter('the_content', 'wpautop');
+
+define( 'WP_CONTENT_URL', get_option( 'siteurl' ) . '/wp-content' ); // Full URL - WP_CONTENT_DIR is defined further up.
 
  show_admin_bar(false);
 
 if ( ! isset( $content_width ) ) {
 	$content_width = 474;
 }
+
+# Définir l'éditeur Visuel en tant qu'éditeur par défaut #
+add_filter( 'wp_default_editor', create_function('', 'return "tinymce";') );
+
+# Définir l'éditeur Texte en tant qu'éditeur par défaut #
+add_filter( 'wp_default_editor', create_function('', 'return "html";') );
 
 /**
  * Twenty Fourteen only works in WordPress 3.6 or later.
@@ -86,7 +98,7 @@ function twentyfourteen_setup() {
 	// Enable support for Post Thumbnails, and declare two sizes.
 	add_theme_support( 'post-thumbnails' );
 	set_post_thumbnail_size( 672, 372, true );
-	add_image_size( 'twentyfourteen-full-width', 1038, 576, true );
+	//add_image_size( 'twentyfourteen-full-width', 1038, 576, true );
 
 	// This theme uses wp_nav_menu() in two locations.
 	register_nav_menus( array(
@@ -235,27 +247,43 @@ function twentyfourteen_font_url() {
 function themeScripts() {
 	
     // Load specific stylesheet.
-	wp_enqueue_style( 'cnfi-fonts-css', 'https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;subset=latin,latin-ext' );
-	wp_enqueue_style( 'et-gf-poiret-one-css', 'https://fonts.googleapis.com/css?family=Poiret+One:400&amp;subset=latin,latin-ext,cyrillic' );
-	wp_enqueue_style( 'et-gf-lato-css', 'https://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,700italic,900,900italic&amp;subset=latin,latin-ext' );
+	/*wp_enqueue_style( 'cnfi-fonts-css', 'https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;subset=latin,latin-ext' );
+	
+
+	//wp_enqueue_style( 'et-gf-poiret-one-css', 'https://fonts.googleapis.com/css?family=Poiret+One:400&amp;subset=latin,latin-ext,cyrillic' );
+	wp_enqueue_style( 'et-gf-poiret-one-css', 'https://fonts.googleapis.com/css?family=Poppins%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2Cregular%2Citalic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CPlayfair+Display%3Aregular%2Citalic%2C700%2C700italic%2C900%2C900italic&ver=5.3.4#038;subset=latin,latin-ext' );
+	wp_enqueue_style( 'et-gf-lato-css', 'https://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,700italic,900,900italic&amp;subset=latin,latin-ext' );*/
 	wp_enqueue_style( 'cnfi-style-css', get_template_directory_uri() . '/css/style.css?ver=3.0.51' );
 	wp_enqueue_style( 'font-awesome-css', get_template_directory_uri() . '/css/font-awesome.min03ec.css' );
+	wp_enqueue_style( 'unified-css', get_template_directory_uri() . '/css/et-core-unified.min.css' );
+
+	/*wp_register_script('scrollReveal', get_template_directory_uri() . '/js/scrollReveal.js',array('jquery'),true);
+	wp_enqueue_script('scrollReveal');*/
+
+
+	/*wp_enqueue_script( 'frontend-builder-global-functions591a',get_stylesheet_directory_uri() . '/includes/builder/scripts/frontend-builder-global-functions591a.js?ver=3.0.51',array() );
+	wp_enqueue_script( 'query.mobile.custom.min591a',get_stylesheet_directory_uri() . '/includes/builder/scripts/jquery.mobile.custom.min591a.js?ver=3.0.51',array() );
+	wp_enqueue_script( 'custom591a',get_stylesheet_directory_uri() . '/js/custom591a.js?ver=3.0.51',array() );
+	wp_enqueue_script( 'fitvids591a',get_stylesheet_directory_uri() . '/includes/builder/scripts/jquery.fitvids591a.js?ver=3.0.51',array() );
+	wp_enqueue_script( 'waypoints',get_stylesheet_directory_uri() . '/includes/builder/scripts/waypoints.min591a.js?ver=3.0.51',array() );
+	wp_enqueue_script( 'magnific',get_stylesheet_directory_uri() . '/includes/builder/scripts/jquery.magnific-popup591a.js?ver=3.0.51mh',array() );*/
    
 
 	// Load script
     if ( !is_admin() ) {
-        wp_enqueue_script( 'bootstrap-script', get_template_directory_uri() . '/js/bootstrap.min.js', array( 'jquery' ), date("Ymd") );
-        wp_enqueue_script( 'scroll-script', get_template_directory_uri() . '/js/jquery-scrollTo.min.js', array(), date("Ymd") );
-        wp_enqueue_script( 'select-script', get_template_directory_uri() . '/js/bootstrap-select.js', array(), date("Ymd") );
-        wp_enqueue_script( 'bootstrapvalidate-script', 'https://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js', array(), date("Ymd") );
-        wp_enqueue_script( 'bootstrapvalidatetip-script', get_template_directory_uri() . '/js/jquery-validate.bootstrap-tooltip.min.js', array(), date("Ymd") );
-		wp_enqueue_script( 'datepicker-script', get_template_directory_uri() . '/js/bootstrap-datepicker.js', array(), date("Ymd") );	wp_enqueue_script( 'fhp-script', get_template_directory_uri() . '/js/script.js', array(), date("Ymd") );
-        wp_enqueue_script( 'dev-script', get_template_directory_uri() . '/js/script-dev.js', array(), date("Ymd") );
-		wp_enqueue_script( 'lightbox-script', get_template_directory_uri() . '/js/lightbox.js', array(), date("Ymd") );
-		wp_enqueue_script( 'share-script', get_template_directory_uri() . '/js/share.js', array(), date("Ymd") );
+ 
 	}
 }
 add_action( 'wp_enqueue_scripts', 'themeScripts' );
+
+
+add_action( 'wp_enqueue_scripts', 'add_aos_animation' );
+function add_aos_animation() {
+	wp_enqueue_style('AOS_animate', 'https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css', false, null);
+	wp_enqueue_script('AOS', 'https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js', array('jquery'),true);
+	wp_enqueue_script('AOS');
+}
+
 
 /**
  * Enqueue Google fonts style to admin screen for custom header display.
@@ -526,109 +554,6 @@ function sc_slide_func( $atts, $content) {
 
 add_shortcode( 'sc_slide', 'sc_slide_func');
 
-/**************************************************************************************
-*           Custom menu walker
-***************************************************************************************/
-class CustomWalkerNavMenu extends Walker {
-    var $tree_type = array( 'post_type', 'taxonomy', 'custom' );
-    var $db_fields = array( 'parent' => 'menu_item_parent', 'id' => 'db_id' );
-    function start_lvl(&$output, $depth) {
-        $indent = str_repeat("\t", $depth);
-        $output .= "";
-    }
-    function end_lvl(&$output, $depth) {
-        $indent = str_repeat("\t", $depth);
-        $output .= "";
-    }
-
-
-	public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
-		$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
-
-		$classes = empty( $item->classes ) ? array() : (array) $item->classes;
-		$classes[] = 'menu-item-' . $item->ID;
-
-		$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args ) );
-
-		/* activation menu quand article fiche */
-		if($item->attr_title == 'act')
-		{
-			if(basename(get_single_template()) == "single.php" && is_single() == 1)
-			{
-				if(!isPostJobAffinity(get_the_ID()))
-				{
-					$class_names .= " active";
-				}
-			}
-		}
-
-
-		/* activation menu quand recrutement fiche */
-		if($item->attr_title == 'rec')
-		{
-
-			if(basename(get_single_template()) == "single.php" && is_single() == 1)
-			{
-				if(isPostJobAffinity(get_the_ID()))
-				{
-					$class_names .= " active";
-				}
-			}
-
-			if(basename(get_single_template()) == "single-job_listing.php" && is_single() == 1)
-			{
-				$class_names .= " active";
-			}
-		}
-
-
-		$class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
-
-
-		$id = apply_filters( 'nav_menu_item_id', 'menu-item-'. $item->ID, $item, $args );
-		$id = $id ? ' id="' . esc_attr( $id ) . '"' : '';
-
-		$output .= ""; //$indent . '<li' . $id . $class_names .'>';
-
-		$atts = array();
-		$atts['title']  = ! empty( $item->attr_title ) ? $item->attr_title : '';
-		$atts['target'] = ! empty( $item->target )     ? $item->target     : '';
-		$atts['rel']    = ! empty( $item->xfn )        ? $item->xfn        : '';
-		$atts['href']   = ! empty( $item->url )        ? $item->url        : '';
-
-		$atts = apply_filters( 'nav_menu_link_attributes', $atts, $item, $args );
-
-		$attributes = '';
-		foreach ( $atts as $attr => $value ) {
-			if ( ! empty( $value ) ) {
-				$value = ( 'href' === $attr ) ? esc_url( $value ) : esc_attr( $value );
-				$attributes .= ' ' . $attr . '="' . $value . '"';
-			}
-		}
-
-		/* traitement menu */
-		$zTitreMenu = $item->title ;
-		$oTitreMenu = split(" ", $zTitreMenu);
-		$zTitreMenu = str_replace($oTitreMenu[0],$oTitreMenu[0] . " <br/> ", $zTitreMenu);
-		
-
-		$item_output .= ' <li class="menu-'.$atts['title'].'">';
-		$item_output .=	'<a '.$class_names.' href="'.$atts['href'].'" title="">';
-		$item_output .=	'<span></span>';
-		$item_output .= '<span>';
-		$item_output .= $zTitreMenu;
-		$item_output .= '</span></a></li>';
-
-
-
-		$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
-	}
-
-    function end_el(&$output, $item, $depth) {
-        $output .= "";
-    }
-}
-
 add_filter('nav_menu_css_class' , 'special_nav_class' , 10 , 2);
 function special_nav_class($classes, $item){
 
@@ -642,71 +567,6 @@ function special_nav_class($classes, $item){
 /**************************************************************************************
 *           Custom menu walker
 ***************************************************************************************/
-class CustomWalkerNavMenuFooter extends Walker {
-    var $tree_type = array( 'post_type', 'taxonomy', 'custom' );
-    var $db_fields = array( 'parent' => 'menu_item_parent', 'id' => 'db_id' );
-    function start_lvl(&$output, $depth) {
-        $indent = str_repeat("\t", $depth);
-        $output .= "";
-    }
-    function end_lvl(&$output, $depth) {
-        $indent = str_repeat("\t", $depth);
-        $output .= "";
-    }
-
-
-	public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
-		$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
-
-		$classes = empty( $item->classes ) ? array() : (array) $item->classes;
-		$classes[] = 'menu-item-' . $item->ID;
-
-		$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args ) );
-		$class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
-
-
-		$id = apply_filters( 'nav_menu_item_id', 'menu-item-'. $item->ID, $item, $args );
-		$id = $id ? ' id="' . esc_attr( $id ) . '"' : '';
-
-		$output .= ""; //$indent . '<li' . $id . $class_names .'>';
-
-		$atts = array();
-		$atts['title']  = ! empty( $item->attr_title ) ? $item->attr_title : '';
-		$atts['target'] = ! empty( $item->target )     ? $item->target     : '';
-		$atts['rel']    = ! empty( $item->xfn )        ? $item->xfn        : '';
-		$atts['href']   = ! empty( $item->url )        ? $item->url        : '';
-
-		$atts = apply_filters( 'nav_menu_link_attributes', $atts, $item, $args );
-
-		$attributes = '';
-		foreach ( $atts as $attr => $value ) {
-			if ( ! empty( $value ) ) {
-				$value = ( 'href' === $attr ) ? esc_url( $value ) : esc_attr( $value );
-				$attributes .= ' ' . $attr . '="' . $value . '"';
-			}
-		}
-
-		/* traitement menu */
-		$zTitreMenu = $item->title ;
-		$oTitreMenu = split(" ", $zTitreMenu);
-		$zTitreMenu = str_replace($oTitreMenu[0],$oTitreMenu[0] . " <br/> ", $zTitreMenu);
-		$zTitreMenu = str_replace("?", "&nbsp;?", $zTitreMenu);
-
-
-		$item_output .= '<li>';
-		$item_output .=	'<a href="'.$atts['href'].'" title="'.$item->title.'">';
-		$item_output .= $item->title;
-		$item_output .= '</a></li>';
-
-
-
-		$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
-	}
-
-    function end_el(&$output, $item, $depth) {
-        $output .= "";
-    }
-}
 
 
 /**************************************************************************************
@@ -2578,28 +2438,8 @@ function human_time_diff11( $from, $to = '' ) {
 }
 
 
-// Entreprises
-add_image_size ('entreprise_icon_home_image_size', 84, 83, true);
-
-
-// Mairie
-add_image_size ('mairie_listing_image_size', 84, 83, true);
-
-// Politique RH
-add_image_size ('politique_listing_image_size', 299, 188, true);
-
-// CRECHE QUI SOMME NOUS
-add_image_size ('qui_sommes_nous_slider_image_size', 860, 360, true);
-
-// ACTUS
-add_image_size ('actu_image_size', 350, 270, true);
-add_image_size ('actu_image_size_large', 980, 342, false);
-add_image_size ('creche_dediee_slider_image_size', 593, 493, false);
-add_image_size ('creche_fiche_slider_image_size', 9999, 534, false);
-add_image_size ('header_fiche_image_size', 9999, 584, false);
-add_image_size ('bg_visite_image_size', 9999, 393, false);
-
-add_image_size ('slide_image_cnfi_size_large', 1657, 269, false);
+add_image_size ('slide_image_cnfi_size_large', 1398, 475, false);
+add_image_size ('image_a_la_une', 540, 242, false);
 
 function getIdUserAffinity()
 {
@@ -2960,257 +2800,6 @@ function  getTimePassed($_zDate)
 	return $zDate;
 }
 
-function getListeJobType()
-{
-	$tReturn = array();
-	$args =  array (
-										'post_type' => 'post',
-										'orderby'   => 'date',
-										'order' => 'DESC',
-										'post_status' => 'publish',
-										'author__in' => getIdUserAffinity(),
-										'nopaging'		=> true
-										);
-	$toJobs		= new WP_Query( $args );
-	$tJobsList = $toJobs->posts;
-	if(sizeof($tJobsList) > 0)
-	{
-		foreach ($tJobsList as $tPost)
-		{
-			$zJobType = get_field('job_contract_type',$tPost->ID);
-			if(!in_array($zJobType,$tReturn) && $zJobType!='')
-			{
-				array_push($tReturn,$zJobType);
-			}
-		}
-	}
-	sort($tReturn);
-	return $tReturn;
-}
-
-
-function isPostJobAffinity($_iPostId)
-{
-	$tIdJobAffinity = getIdUserAffinity();
-
-	$tReturn  = false;
-	$args			= array (
-									'post_type'		=> 'post',
-									'post__in'		=> array($_iPostId),
-									'orderby'   	=> 'date',
-									'order' 		=> 'DESC',
-									'post_status' 	=> 'publish',
-									'author__in' 	=> getIdUserAffinity()
-								);
-			$toJobs		= new WP_Query( $args );
-
-			$tJobsList = $toJobs->posts;
-			if(isset($tJobsList[0]))
-			{
-				$tReturn  = true;
-			}
-
-	return $tReturn;
-}
-
-
-
-add_action( 'wp_ajax_load_searchCrecheDediee_results', 'load_searchCrecheDediee_results' );
-add_action( 'wp_ajax_nopriv_load_searchCrecheDediee_results', 'load_searchCrecheDediee_results' );
-function load_searchCrecheDediee_results($_isPage = 0)
-{
-	$zSearchTerm = (isset($_POST['zSearchTerm']))?$_POST['zSearchTerm']:'';
-
-	$toCrecheCanailles = getListeCreches ('oui', $zSearchTerm,1);
-	$zOutputResult = '';
-
-	if(sizeof($toCrecheCanailles) >0)
-	{
-	//AFFICHAGE RESULTAT RECHERCHE
-		foreach ($toCrecheCanailles as $k=>$oCrecheCanailles)
-		{
-
-			$iIdCreche	=	$oCrecheCanailles->ID;
-
-			$zVileNom = "" ;
-			$iVilleId = rpt_get_object_relation($iIdCreche, 'ville');
-
-			$args			= array (
-									'post_type'		=> 'ville',
-									'post__in'		=> $iVilleId,
-									'orderby'   	=> 'date',
-									'order' 		=> 'DESC',
-									'post_status' 	=> 'publish',
-									'nopaging'		=> true
-								);
-			$toVille		= new WP_Query( $args );
-
-			//print_r ($toVille);
-
-			$zVileNom = "" ;
-			$zCodePostal = "";
-			if( count($toVille) > 0 ){
-				foreach( $toVille as $oVille ){
-					if( trim($oVille->post_title)!='' ){
-						$zVileNom = $oVille->post_title;
-						$zCodePostal	= get_field('code_postal', $oVille->ID);
-					}
-				}
-			}
-
-			/* enlever le Paris (75020 )*/
-			if (preg_match("/\b".$zCodePostal."\b/i", $zVileNom, $match))
-			{
-				$zVileNom = str_replace ('('.$zCodePostal.')','',$zVileNom);
-				$zVileNom = str_replace ($zCodePostal,'',$zVileNom);
-			}
-
-			$toImages = get_multi_images_src('creche_dediee_slider_image_size','full',false,$iIdCreche);
-			$zOutputResult.= '
-				<article id="creche_'.$iIdCreche.'">
-
-							<div class="listActu">';
-							if(isset($toImages['image1'][0][0]))
-							{
-								$zOutputResult.= ' <div class="imgL Parent-image"><a class="image" style="background-image:url(\''.$toImages['image1'][0][0].'\')"></a></div>';
-							}
-							else
-							{
-								$zOutputResult.= ' <div class="imgL Parent-image"><a class="image" style="background-image:url(\''. get_template_directory_uri() .'/images/empty-carousel.png\')"></a></div>';
-							}
-			$zOutputResult.= '
-							  <div class="rt">
-								  <h2>'.get_field('nom_creche', $iIdCreche).'</h2>
-								  <p>'.nl2br($oCrecheCanailles->post_content).'</p>
-								  <span class="voir"><a href="'.get_permalink($iIdCreche).'" title="Voir la fiche">Voir la fiche</a></span>
-							  </div>
-							</div>
-
-
-						   </article>';
-		}
-	}
-	else
-	{
-		 $zOutputResult.='<article class="no-result">Aucun résultat</article>';
-	}
-
-
-	if($_isPage == 0)
-	{
-		$tData['result'] = $zOutputResult;
-		$tData = json_encode($tData);
-		 header( 'Content-Type: application/json' );
-		echo $tData;
-	}
-	else
-	{
-		return  $zOutputResult;
-	}
-	die();
-}
-
-
-
-function getSelectDepartement(){
-
-	$zHtmlSelect	= '';
-	$args			= array (
-							'post_type'		=> 'departement',
-							'orderby'   	=> 'post_title',
-							'order' 		=> 'ASC',
-							'post_status' 	=> 'publish',
-							'nopaging'		=> true
-						);
-	$toDept		= new WP_Query( $args );
-	$tDeptList = $toDept->posts;
-	// echo "<pre>";print_r($tDeptList);echo "</pre>";
-	if(is_array($tDeptList) && !empty($tDeptList) ){
-		$zHtmlSelect.= '<div class="selCategorie2">';
-		$zHtmlSelect.= '<select class="selectDept" id="zSearchTerm" name="drop1" style="width:42px; overflow:hidden; position:relative; ">';
-		$zHtmlSelect.= '<option value="0">Recherchez votre crèche</option>';
-		foreach ($tDeptList as $tDept)
-		{
-			$zHtmlSelect.= '<option value="'.$tDept->ID.'">'.$tDept->post_title.'</option>';
-		}
-        $zHtmlSelect.= '</select></div>';
-	}
-	return $zHtmlSelect;
-}
-
-function getSelectMetier(){
-
-	$zHtmlSelect = '';
-	$zTaxonomies = array(
-					    'metier'
-					  );
-	$aArgs 		 = array(
-						'orderby'    => 'name',
-						'order'      => 'ASC',
-						'hide_empty' => false,
-						'fields'     => 'all'
-					);
-
-	$aTerms = get_terms($zTaxonomies, $aArgs);
-
-	if( is_array($aTerms) && !empty($aTerms) ){
-		foreach ($aTerms as $key => $value) {
-			echo $value->term_id;
-			$zHtmlSelect .= "<option value='".$value->term_id."'>".$value->name."</option>";
-		}
-	}
-	return $zHtmlSelect;
-}
-
-/*
-add_action( 'init', 'create_job_metier_taxonomy', 0 );
-function create_job_metier_taxonomy() {
-
-  $labels = array(
-    'name'                       => _x( 'Metiers', 'metiers' ),
-    'singular_name'              => _x( 'Metier', 'metier' ),
-    'search_items'               =>  __( 'Rechercher Metiers' ),
-    'popular_items'              => __( 'Metiers Popular' ),
-    'all_items'                  => __( 'Tous les Metiers' ),
-    'parent_item'                => null,
-    'parent_item_colon'          => null,
-    'edit_item'                  => __( 'Editr Metier' ),
-    'update_item'                => __( 'Modifier Metier' ),
-    'add_new_item'               => __( 'Ajouter Metier' ),
-    'new_item_name'              => __( 'Nouveau Metier' ),
-    'separate_items_with_commas' => __( 'Séparer metier par virgule' ),
-    'add_or_remove_items'        => __( 'Ajout ou suppression metier' ),
-    'choose_from_most_used'      => __( 'Metiers les plus utilisés' ),
-    'menu_name'                  => __( 'Métiers' ),
-  );
-
-  register_taxonomy('metier','post',array(
-    'hierarchical'          => false,
-    'labels'                => $labels,
-    'show_ui'               => true,
-    'show_admin_column'     => true,
-    'update_count_callback' => '_update_post_term_count',
-    'query_var'             => true,
-    'rewrite'               => array( 'slug' => 'metier' ),
-  ));
-}
-*/
-
-add_action('init', 'create_job_metier_taxonomy', 0);
-function create_job_metier_taxonomy() {
-	register_taxonomy(
-		'metier',
-		'post',
-		array(
-				'label'             => 'Métier',
-				'show_ui'           => true,
-				'show_admin_column' => true,
-				'hierarchical'      => true,
-				'query_var'         => true,
-				'rewrite'           => array('slug' => 'metier')
-			)
-	);
-}
 
 function encrypt($data) {
     $key = "9zGKCDwI";
@@ -3240,21 +2829,41 @@ function decrypt($data) {
 
 function getContentCV(){
 
-			$toCv = get_field('contenu_cv_cnfi', ID_ARTICLLE_CV);
+			$args	= array (
+					'post_type'		=> 'cv',
+					'orderby'   	=> 'date',
+					'order' 		=> 'DESC',
+					'post_status' 	=> 'publish',
+					'nopaging'		=> true
+				);
+
+			$toCvPosts     = new WP_Query( $args );
+
+			$toCv = $toCvPosts->posts;
+
+			$toRepeterCv = array();
+			foreach ($toCv as $oCv){
+				$toRepeterCv = get_field('contenu_cv_cnfi', $oCv->ID);
+			}
 			
-			$zReturn  = '<div class=" et_pb_row et_pb_row_7">';
+			$zReturn  = '<div class=" et_pb_row et_pb_row_7" data-aos="fade-left">';
 
 				$iIncrement = 0;
 				$iIncr2 = 15;
 
-				foreach ($toCv as $oCv){
+				foreach ($toRepeterCv as $oRepeterCv){
 
 					$iIncr3 = ($iIncr3==0)?1:0;
 
-					$zNom = $oCv['nom_cv'];
-					$zFonction = $oCv['fonction_cv'];
-					$zDescription = $oCv['description_cv'];
-					$zPhoto = $oCv['photo_cv']['sizes']['thumbnail'];
+					$zNom = $oRepeterCv['nom_cv'];
+					$zFonction = $oRepeterCv['fonction_cv'];
+					$zDescription = $oRepeterCv['description_cv'];
+					$toPhotos = $oRepeterCv['photo_cv'];
+
+					$zPhoto = "";
+					if(sizeof($toPhotos)>0){
+						$zPhoto =  $toPhotos['sizes']['thumbnail'];
+					}
 
 					if($iIncrement%2==0 && $iIncrement>0){
 						$zReturn .= '</div>';
@@ -3289,3 +2898,880 @@ function getContentCV(){
 			$zReturn .= '</div>';
 			echo $zReturn;
 }
+
+function getRandomStat(){
+
+		$iRand =  rand(1, 7);
+
+		$zReturn = "<div class='et_pb_section_0  et_section_regular '><div class='et_pb_row et_pb_row_0'>";
+		$zReturn .= '<div class="enteteTitre center">
+								<div class="wrapper">
+									<h1 class="titrePage center" data-aos="fade-down" >Données clés sur le secteur de la microfinance</h1>        
+								</div>
+							</div>';
+		$zReturn .= '<p id="pieChart'.$iRand.'" style="height: 400px;width:100%;"></p>
+					 <script type="text/javascript"  src="'.get_template_directory_uri() .'/js/chart'.$iRand.'.js"></script>';
+		//$zReturn .= '<p id="pieChart'.$iRand.'" style="height: 400px;width:100%;"></p>';
+		$zReturn .= '</div></div>';
+
+		echo $zReturn;
+}
+
+
+function getStatChiffreCle(){
+
+			$zTaxonomy = 'cat_chiffre-cle';
+			$toTerms = get_terms( $zTaxonomy );
+
+			//$a=array("a"=>"red","b"=>"green","c"=>"blue","d"=>"yellow");
+
+			$toCategorieChiffreCle = array();
+			foreach ($toTerms as $oTerms){
+				array_push($toCategorieChiffreCle, $oTerms->term_id);
+			}
+
+			if(sizeof($toCategorieChiffreCle)>0){
+					$iRandomTermId = array_rand($toCategorieChiffreCle,1);
+
+					$iRandomTermId = $toCategorieChiffreCle[$iRandomTermId];
+
+					$oTaxonomy = get_term_by('id', $iRandomTermId, $zTaxonomy);
+
+					$args	= array (
+							'post_type'		=> 'chiffre-cle',
+							'orderby'   	=> 'date',
+							'order' 		=> 'DESC',
+							'post_status' 	=> 'publish',
+							'orderby'		=> 'meta_value_num',
+							'order'			=> 'ASC',
+							'nopaging'		=> true,
+							'tax_query' => array(
+								array(
+									'taxonomy' => 'cat_chiffre-cle',  
+									'field' => 'term_id',          
+									'terms' => $iRandomTermId,                 
+								)
+							)
+						);
+
+					$toSlidePosts     = new WP_Query( $args );
+					
+					/*echo "<pre>";
+					print_r ($toSlidePosts->posts);
+					echo "</pre>";*/
+
+
+					$toRepeterCv = array();
+					
+					$zReturn  = '<div class="et_pb_section_1 et_pb_section et_pb_section_0 section_has_divider et_pb_bottom_divider">		
+									<div class="et_pb_row et_pb_row_0 divider">';
+					
+					$zReturn  .= '
+								<div class="et_pb_module et_pb_text et_pb_text_2 et_pb_text_align_center et_pb_bg_layout_light">
+									<div class="et_pb_text_inner"><h2>'. pll__("Chiffres clés").'</h2></div>
+								</div>
+								<!-- .et_pb_text -->
+								<div class="et_pb_module et_pb_divider et_pb_divider_1 et_pb_divider_position_ et_pb_space"><div class="et_pb_divider_internal"></div></div>
+								<div class="et_pb_module et_pb_text et_pb_text_3 et_pb_text_align_left et_pb_bg_layout_light">
+										<div class="et_pb_text_inner"><h2>'.$oTaxonomy->name.'</h2></div>
+								</div>
+								<ul class="et_pb_module et_pb_counters et_pb_counters_0 et-waypoint et_pb_bg_layout_light et-animated">
+									
+								';
+
+						$iIncrement = 0;
+						$iIncr2 = 15;
+
+						foreach ($toSlidePosts->posts as $oSlidePosts){
+							
+							$zValue = get_field('valeur-chiffre-cle', $oSlidePosts->ID);
+							$zReturn .= '<li class="et_pb_counter et_pb_counter_0">
+											<span class=" label1 et_pb_counter_title">'.$oSlidePosts->post_title.'</span>
+											<span class="et_pb_counter_container has-box-shadow-overlay">
+												<div class="box-shadow-overlay progress"></div>
+													<span class="et_pb_counter_amount progress-bar" style="width: '.$zValue.'%;" data-width="'.$zValue.'%" data-aos="fade-right">
+														<span class="et_pb_counter_amount_number"><span class="et_pb_counter_amount_number_inner">'.$zValue.'%</span></span>
+													</span>
+											</span>
+										</li>';
+
+							
+							$iIncrement++;
+						}
+					$zReturn  .= '</ul>
+								<!-- .et_pb_counters -->
+
+								</div>
+
+							 </div>
+							';
+
+					/*$zReturn .= '<div class="et_pb_column et_pb_column_1_2 et_pb_column_2 et_pb_css_mix_blend_mode_passthrough et-last-child">
+									<div class="et_pb_module et_pb_text et_pb_text_3 et_pb_text_align_left et_pb_bg_layout_light">
+										<div class="et_pb_text_inner"><p>'.$oTaxonomy->name.'</p></div>
+									</div>
+									<!-- .et_pb_text -->
+									<div class="et_pb_module et_pb_divider et_pb_divider_2 et_pb_divider_position_ et_pb_space"><div class="et_pb_divider_internal"></div></div>
+									<div class="et_pb_module et_pb_text et_pb_text_4 et_pb_text_align_left et_pb_bg_layout_light">
+										<div class="et_pb_text_inner">
+											<p>
+												'.$oTaxonomy->description.'
+											</p>
+										</div>
+									</div>
+									<!-- .et_pb_text -->
+								</div>
+								<!-- .et_pb_column -->';*/
+			}
+			echo $zReturn;
+}
+
+function getDocumentation(){
+	   $args	= array (
+					'post_type'		=> 'documentation',
+					'orderby'   	=> 'date',
+					'order' 		=> 'DESC',
+					'post_status' 	=> 'publish',
+					'orderby'		=> 'meta_value_num',
+					'order'			=> 'ASC',
+					'nopaging'		=> true,
+					'meta_query'	=> array(
+						'relation'		=> 'AND',
+						array(
+							'key'		=> 'a_la_une',
+							'value'		=> '0',
+							'compare'	=> '='
+						)
+					)
+				);
+
+		$toDocumentationPosts     = new WP_Query( $args );
+
+		$toDocumentation = $toDocumentationPosts->posts;
+
+		/*echo "<pre>";
+		print_r ($toDocumentation);
+		echo "</pre>";
+		die();*/
+		$zReturn = '';
+		$zPhoto = '';
+		$iIncrement = 0;
+		if( count($toDocumentation) > 0 ){
+			foreach( $toDocumentation as $oDocumentation ){
+
+				if( trim($oDocumentation->post_title)!='' ){
+							
+					$zTitre = '<a href="'.get_permalink( $oDocumentation->ID ).'" class="btn-rose">'.$oDocumentation->post_title.'</a>';
+					$zContenu = truncate($oDocumentation->post_content,300);
+					$zImage = get_field('photo_documentation', $oDocumentation->ID);
+
+					$zPhoto = '';
+					if($zImage!=''){
+						$zPhoto = '<img src="'.$zImage.'" alt="'.$oDocumentation->post_title.'">';
+					}
+					
+					if($iIncrement%2==0 && $iIncrement>0){
+						$zReturn .= '</div>';
+					}
+
+					if($iIncrement%2==0){
+						$zReturn .= '<div class=" et_pb_row et_pb_row_0">';
+					}
+
+					$zReturn .= '<div class="isDocumentation fond-blanc et_pb_column et_pb_column_1_2  et_pb_column_0 border-red"';
+					
+					$zReturn .= ($iIncrement%2==0)?'data-aos="fade-right">':'data-aos="fade-left">';
+
+					$zReturn .= '<div class="et_pb_blurb et_pb_module et_pb_bg_layout_light et_pb_text_align_center  et_pb_blurb_0 et_pb_blurb_position_top">
+												<h6 class="red-border-bottom bloc">'.$zTitre.'</h6>
+												<div class="et_pb_blurb_content">
+														<div class="et_pb_column bloc et_pb_column_1_3 et_pb_column_0 border-red" style="width:35%">
+															<div class="et_pb_main_blurb_image">
+																<div class="img-hover-zoom img-hover-zoom--colorize">'.$zPhoto.'</div>
+															</div>
+														</div>
+														<div class="et_pb_column et_pb_column_2_3 et_pb_column_1 fond-blanc  border-red " style="width:65%;padding-left:10px">
+															<div class="et_pb_blurb_container">
+																<p class="p1 bloc">
+																	'.$zContenu.'
+																</p>
+															</div>
+														</div>
+												</div>
+									  </div>
+							   </div>';
+
+					
+					
+				}
+
+				$iIncrement++;
+			}
+
+			$zReturn .= '</div><p>&nbsp;</p>';
+		}
+		echo $zReturn;
+}
+
+
+function getFichier(){
+	   $args	= array (
+					'post_type'		=> 'fichier',
+					'orderby'   	=> 'date',
+					'order' 		=> 'DESC',
+					'post_status' 	=> 'publish',
+					'orderby'		=> 'meta_value_num',
+					'order'			=> 'ASC',
+					'lang'			=> 'fr',
+					'nopaging'		=> true
+				);
+
+		$toFichierPosts     = new WP_Query( $args );
+
+		$toFichier = $toFichierPosts->posts;
+
+		$zReturn = '';
+		$zPhoto = '';
+		$iIncrement = 0;
+		if( count($toFichier) > 0 ){
+			foreach( $toFichier as $oFichier ){
+
+				if( trim($oFichier->post_title)!='' ){
+							
+					$oFichierDownload = get_field('fichier_download', $oFichier->ID);
+					
+					$zLink = $oFichierDownload['url'];
+					$zTailleFichier =  (int)($oFichierDownload['filesize']/1024) . " Ko";
+
+					$zTitre = '<a href="'.$zLink.'" target="_blank" class="btn-rose titreDoc">'.$oFichier->post_title.'</a>';
+					$zDate = '<a href="'. $zLink .'" target="_blank" class="btn-rose titreDoc date">'.get_field('date_de_publication', $oFichier->ID).'</a>';
+					
+
+					$zReturn .= '
+								 <span class="et-pb-icon et-waypoint et_pb_animation_top et-pb-icon-circle et-pb-icon-circle1" style="color: #ffffff; background-color: #407458;vertical-align:middle">i </span><span class"titreDoc"> '.$zDate.'<span style="display:block;" class="margin">'.$zTitre.' <span style="color:black;font-size:13px"> ('.$zTailleFichier.')</span></span>';
+
+					if($iIncrement != count($toFichier)-1){
+						//$zReturn .= '<hr>';
+					}
+				}
+
+				$iIncrement++;
+			}
+		}
+		echo $zReturn;
+}
+
+
+function wpb_first_and_last_menu_class($items) {
+    $items[1]->classes[] = 'first';
+    $items[count($items)]->classes[] = 'LastBDDIF';
+    return $items;
+}
+add_filter('wp_nav_menu_objects', 'wpb_first_and_last_menu_class');
+
+
+
+function getBlocAccueil($_zTitre, $_iTab){
+	    
+		//$zColorTab0 = 'background-image: -webkit-linear-gradient(top,#599675 0,#135f36 100%)';
+		$zColorTab0 = 'background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728);';
+		//$zColorTab0 = 'background-image: -webkit-linear-gradient(top,#655EDB  0,#655EDB  100%)';
+		$zColorTab1 = 'background-image: -webkit-linear-gradient(top,#F25CA2  0,#F25CA2  100%)';
+		$zColorTab2 = 'background-image: -webkit-linear-gradient(top,#F2655C 0,#F2655C 100%)';
+		$zColorTab4 = 'background-image: -webkit-linear-gradient(top,#EB7A00 0,#EB7A00 100%)';
+		$zColorTab3 = 'background-image: -webkit-linear-gradient(top,#78CFF5 0,#78CFF5 100%)';
+		
+		$toColor = array ($zColorTab0, $zColorTab1, $zColorTab2, $zColorTab3, $zColorTab4, $zColorTab5);
+
+		//$iTab =  rand(0,4);
+
+		$zCcolor = $toColor[0];
+		
+		$zReturn = '
+					<div class="gf_browser_unknown gform_wrapper_9 shadow">
+						<div class="gform_body">
+							<div class="bloc blocBlue1">
+								<div class="imgPt Parent-image11">
+									<a href="#" title="" class="image011"></a>
+									<div class="blocAbs1">
+										<div class="txt">
+											<h6 class="center" style="'.$zCcolor.'">'.pll__($_zTitre).'</h6>
+											<ul>
+                                                <li><a href="#">
+												Actualités du 06 janvier 2019</a></li>
+                                                <li><a href="#">Actualités du 06 janvier 2019</a></li>
+                                                <li><a href="#">Actualités du 06 janvier 2019</a></li>
+                                            </ul>
+											
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>';
+		echo $zReturn;
+}
+
+function getBlocDroite($_zTitre){
+	    
+		$toColor = array ("E69400", "#6c757d", "#c8000a", "#3a5199", "f8f9fa");
+
+		$zCcolor = $toColor[rand(0,4)];
+		
+		$zReturn = '
+					<div class="gf_browser_unknown gform_wrapper_9">
+						<div class="gform_body">
+							<div class="bloc blocBlue1">
+								<div class="imgPt Parent-image11">
+									<a href="#" title="" class="image011"></a>
+									<div class="blocAbs1">
+										<div class="txt">
+											<h6 class="center" style="background-color: '.$zCcolor.'">'.pll__($_zTitre).'</h6>
+											<ul>
+                                                <li><a href="#">Actualités du 06 janvier 2019</a></li>
+                                                <li><a href="#">Actualités du 06 janvier 2019</a></li>
+                                                <li><a href="#">Actualités du 06 janvier 2019</a></li>
+                                            </ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>';
+		echo $zReturn;
+}
+
+
+function getFichier2LireLasuite(){
+	   
+		/*$toQueryPost = get_posts(array(
+			'post_type' => 'documentation',
+		));
+
+		$toPostId = array();
+		foreach( $toQueryPost as $oQueryPost ) {
+			$toPostId[] = $oQueryPost->ID;
+		}
+
+
+		$iRandomPostId = array_rand($toPostId,1);
+
+		$iRandomPostId = $toPostId[$iRandomPostId];*/
+
+		$args	= array (
+			'post_type'			=> 'documentation',
+			'orderby'   		=> 'rand',
+			'offset'			=> '1',
+			'posts_per_page'	=> 1,
+			'post_status' 		=> 'publish',
+			'nopaging'			=> true
+		);
+
+		$toFichierPosts     = new WP_Query( $args );
+
+		//print_r ($toFichierPosts);
+
+		$oFichier = $toFichierPosts->post;
+
+		$zPhoto = '';
+		$iIncrement = 0;
+		if( is_object($oFichier) ){
+				
+			$zTitre = '<a href="'.get_permalink( $oFichier->ID ).'" class="btn-rose">'.$oFichier->post_title.'</a>';
+			$zContenu = truncate($oFichier->post_content,300);
+
+			$zReturn .= '<div class="content blocgrey">
+			<div class="text">
+			<h2 class="block-title">'.$zTitre.'</h2>
+			<div class="body" style="color:#05381d;padding-bottom:20px;">
+			<p>'.$zContenu.'</p> 
+			</div>
+			<div class="more"><a href="'.get_permalink( $oFichier->ID ).'">'.pll__("lire la suite").'&gt;&gt;</a></div>
+			</div>
+			</div>';
+		}
+		echo $zReturn;
+}
+
+function getBienvenue(){
+	   $args	= array (
+					'post_type'		=> 'Accueil',
+					'orderby'   	=> 'date',
+					'order' 		=> 'DESC',
+					'post_status' 	=> 'publish',
+					'orderby'		=> 'meta_value_num',
+					'order'			=> 'ASC',
+					'nopaging'		=> true
+				);
+
+		$toHomePosts     = new WP_Query( $args );
+
+		$toHome = $toHomePosts->posts;
+
+		/*echo "<pre>";
+		print_r ($toHome);
+		echo "</pre>";
+		die();*/
+		$zReturn = '';
+		$zPhoto = '';
+		$iIncrement = 0;
+		if( count($toHome) > 0 ){
+			foreach( $toHome as $oHome ){
+
+				if( trim($oHome->post_title)!='' ){
+							
+					$zTitre = $oHome->post_title;
+					$zContenu = truncate($oHome->post_content,300);
+
+					$zReturn .= '<div class="text col-sm-6 " style="z-index: 1;">
+									<p>&nbsp;</p>
+									<h2 class="block-title">'.$zTitre.'</h2>
+									<div class="body">
+										<p></p><p>'.$zContenu.'</p>
+								<p></p>
+									</div>
+									<div class="more"><a href="'.get_permalink( $oHome->ID ).'">'.pll__("lire la suite").' &gt;&gt;</a></div>
+								</div>';
+
+					
+					
+				}
+
+				$iIncrement++;
+			}
+
+		}
+		echo $zReturn;
+}
+
+function getBlocMeteo(){
+
+		$zMeteo = '
+		<!-- widget meteo -->
+		<div id="widget_d6358cb6a22dbe4af87ca604c7278818">
+		<span style="display:none;" id="l_d6358cb6a22dbe4af87ca604c7278818"><a href="http://www.mymeteo.info/r/accueil_8L">https://www.my-meteo.com</a></span>
+		<script type="text/javascript">
+		(function() {
+			var my = document.createElement("script"); my.type = "text/javascript"; my.async = true;
+			my.src = "https://services.my-meteo.com/widget/js?ville=328&format=vertical&nb_jours=1&temps&icones&vent&c1=393939&c2=a9a9a9&c3=transparent&c4=ffffff&c5=00d2ff&c6=d21515&police=0&t_icones=2&x=160&y=107&d=0&id=d6358cb6a22dbe4af87ca604c7278818";
+			var z = document.getElementsByTagName("script")[0]; z.parentNode.insertBefore(my, z);
+		})();
+		</script>
+		</div>
+		<!-- widget meteo -->
+				
+				';
+		
+		//$zColorTab0 = 'background-image: -webkit-linear-gradient(top,#599675 0,#135f36 100%)';
+		//$zColorTab0 = 'background-image: -webkit-linear-gradient(top,#655EDB  0,#655EDB   100%)';
+		$zColorTab0 = 'background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728);';
+		$zReturn = '
+					<div class="gf_browser_unknown gform_wrapper_9 shadow">
+						<div class="gform_body">
+							<div class="bloc blocBlue1">
+								<div class="imgPt Parent-image11">
+									<a href="#" title="" class="image011"></a>
+									<div class="blocAbs1">
+										<div class="txt">
+											<h6 class="center" style="'.$zColorTab0.'">'.pll__("Météo").'</h6>
+											<ul style="padding-left: 20%;">
+                                                <li>'.$zMeteo.'</li>
+                                            </ul>
+											
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>';
+		echo $zReturn;
+		
+}
+
+
+function getBlocTag(){
+
+		$zTag = file_get_contents(WP_CONTENT_URL . '/themes/cnfi/images/tag.tpl');
+		
+		$zColorTab0 = 'background-image: -webkit-linear-gradient(top,#599675 0,#135f36 100%)';
+		$zReturn = '
+					<div class="gf_browser_unknown gform_wrapper_9 shadow">
+						<div class="gform_body">
+							<div class="bloc blocBlue1">
+								<div class="imgPt Parent-image11">
+									<a href="#" title="" class="image011"></a>
+									<div class="blocAbs1">
+										<div class="txt">
+											<h6 class="center" style="'.$zColorTab0.'">'.pll__("Nuages de Tag").'</h6>
+											<ul style="padding-left: 0%;">
+                                                <li>'.$zTag.'</li>
+                                            </ul>
+											
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>';
+		echo $zReturn;
+		
+}
+
+function getAlaUne(){
+	   
+		$args	= array (
+					'post_type'		=> 'documentation',
+					'orderby'   	=> 'date',
+					'order' 		=> 'DESC',
+					'post_status' 	=> 'publish',
+					'orderby'		=> 'meta_value_num',
+					'order'			=> 'ASC',
+					'nopaging'		=> true,
+					'meta_query'	=> array(
+						'relation'		=> 'AND',
+						array(
+							'key'		=> 'a_la_une',
+							'value'		=> '1',
+							'compare'	=> '='
+						)
+					)
+				);
+
+		$toAlaUnePosts     = new WP_Query( $args );
+
+		$toAlaUne = $toAlaUnePosts->posts;
+
+		$zReturn = '';
+		if( count($toAlaUne) > 0 ){
+
+			 $zReturn .= "<div class='et_pb_section_1 et_pb_section   et_section_regular section_has_divider et_pb_bottom_divider ' style='margin-bottom:25px'><div class='et_pb_row et_pb_row_0 '>";
+			 $zReturn  .= '<div class="enteteTitre center">
+								<div class="wrapper">
+									<h1 class="titrePage center">A la une</h1>        
+								</div>
+							</div>
+							<div class="contBloc owl2">
+								<div id="owl-demo2">';
+			foreach( $toAlaUne as $oAlaUne ){
+
+				if( trim($oAlaUne->post_title)!='' ){
+							
+					$zTitre		= $oAlaUne->post_title;
+					$zContenu	= $oAlaUne->post_content; 
+					$bAlaUne	= get_field('a_la_une', $oAlaUne->ID);
+					$zDate		= get_field('date_a_la_une', $oAlaUne->ID);
+					$zPhoto		= get_field('photo_documentation', $oAlaUne->ID);
+					$zPermalink = get_permalink( $oAlaUne->ID ) ;
+
+
+					  $zReturn .= '
+					  
+									<div class="colChild item">
+									 <div class="colFloat">
+										<div class="imgPt Parent-image">
+										  <a href="'.$zPermalink.'" target="_blank"><span class="image" style="background-image:url(\''.$zPhoto.'\')"></span></a>
+										</div>
+										<div class="txt txt5">
+											<h3><a href="'.$zPermalink.'" target="_blank">'.$zTitre.'</a></h3>
+											<hr/>
+											<p>';
+
+					if($zDate != ''){
+						$zReturn .= '  <span class="matinale"> <a href="#" target="_blank" class="btn-rose titreDoc date">'.$zDate.'</a></span>';
+					}
+
+
+					$zContenu = truncate($zContenu,250);
+			
+					
+					//$zReturn .= truncate(strip_tags($zContenu), 500, '... >>> lire la suite').'</p>
+					$zReturn .= $zContenu.'</p>
+									 <div class="more"><a href="'.get_permalink( $oAlaUne->ID ).'">'.pll__("lire la suite").'&gt;&gt;</a></div>
+									 </div>
+								 </div>
+							  </div>';
+				}
+			}
+
+			$zReturn .= '</div>
+                <div class="customNavigation">
+                  <a class="btn prev">&nbsp;</a>
+                  <a class="btn next">&nbsp;</a>
+            </div>
+          </div>';
+
+		 $zReturn .= ' </div>
+						<br>
+					</div>
+					
+			  ';
+		}
+                  
+
+       
+
+		echo $zReturn;
+			
+}
+
+
+function getSlide(){
+
+		$args	= array (
+					'post_type'		=> 'slide',
+					'orderby'   	=> 'date',
+					'order' 		=> 'DESC',
+					'post_status' 	=> 'publish',
+					'orderby'		=> 'meta_value_num',
+					'order'			=> 'ASC',
+					'nopaging'		=> true
+				);
+
+		$toSlidePosts     = new WP_Query( $args );
+
+		$toSlide = $toSlidePosts->posts;
+
+		/*echo "<pre>";
+		print_r ($toSlide);
+		echo "</pre>";
+		die();*/
+		$zReturn = '';
+		if( count($toSlide) > 0 ){
+			foreach( $toSlide as $oSlide ){
+
+				if( trim($oSlide->post_title)!='' ){
+							
+					$zTitre = $oSlide->post_title;
+					$zContenu = $oSlide->post_content;
+					$zPhoto = get_field('slide_photo', $oSlide->ID);
+
+					$zReturn .= '
+						<div class="et_pb_slide" style="background-image:linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),url('.$zPhoto.');" data-dots_color="#4695c6" data-arrows_color="#4695c6">
+							<div class="et_pb_container clearfix">
+								<div class="et_pb_slider_container_inner">
+									<div class="enteteTitre et_pb_slide_description" style="text-shadow: black 0.1em 0.1em 0.2em;">
+										<h2 class="titrePageSlide">'.$zTitre.'</h2>
+										<div class="et_pb_slide_content">
+										<p style="text-align: justify;font-size:16px;"><span>'.$zContenu.'</span></p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>';
+					
+				}
+			}
+		}
+		echo $zReturn;
+}
+
+function getDevise(){
+	$zContent = file_get_contents('https://www.banky-foibe.mg/admin/wp-json/bfm/cours_devises');
+
+	$zreturn = "";
+	if($zContent!=""){
+		$oContent = json_decode($zContent);
+
+		/*echo "<pre>";
+		print_r ($oContent->data->data->content);
+		echo "</pre>";*/
+
+		$zreturn = "";
+		if(is_object($oContent)){
+			foreach($oContent->data->data->content as $oData){
+				$zreturn .= " 1 " . $oData->devises. " = " . $oData->mid . " Ariary <br />";
+			}
+		}
+	}
+
+	echo $zreturn;
+}
+
+function getTypeInstitution(){
+	global $wpdb;
+
+	$zSql = "SELECT *
+			 FROM {$wpdb->prefix}entity ORDER BY rang ASC";
+
+    $toResult = $wpdb->get_results($zSql);
+
+	$zReturn = "";
+	
+	foreach ($toResult as $oResult){
+		$zSelect = "";
+		if($oResult->id == 2){
+			$zSelect = "selected='selected'";
+		}
+		$zReturn .= '<option '.$zSelect.'  value="'.$oResult->id.'">'.$oResult->nom.'</option>';
+	}
+
+	echo $zReturn;
+}
+
+function getRegion(){
+	global $wpdb;
+
+	$zSql = "SELECT *
+			 FROM {$wpdb->prefix}region ORDER BY nom ASC";
+
+    $toResult = $wpdb->get_results($zSql);
+
+	$zReturn = "<option value='0'>Tous</option>";
+	
+	foreach ($toResult as $oResult){
+		$zReturn .= '<option '.$zSelect.'  value="'.$oResult->id.'">'.$oResult->nom.'</option>';
+	}
+
+	echo $zReturn;
+}
+
+add_action( 'wp_ajax_load_searchInstitution_results', 'load_searchInstitution_results' );
+
+function load_searchInstitution_results(){
+
+	global $wpdb;
+
+	$iCrecheId = (isset($_POST['iCrecheId']))?$_POST['iCrecheId']:'';
+
+	$zSql = "SELECT en.nom AS entite,pr.nom as province,ds.nom AS district,en.pin,
+			 n.nom as nom,c.nom AS commune,r.nom AS region,p.latitude,p.longitude,
+			 r.latitudeR,r.longitudeR
+			 FROM `{$wpdb->prefix}denomination` d
+			 INNER JOIN `{$wpdb->prefix}entity` en ON en.id = d.id_entity
+			 INNER JOIN `{$wpdb->prefix}points` p ON id_denomination = d.id 
+			 INNER JOIN `{$wpdb->prefix}nom` n ON n.id = id_nom
+			 INNER JOIN `{$wpdb->prefix}commune` c ON c.id = id_commune
+			 INNER JOIN `{$wpdb->prefix}district` ds ON ds.id = c.id_district
+			 INNER JOIN `{$wpdb->prefix}region` r ON r.id = ds.id_region
+			 INNER JOIN `{$wpdb->prefix}province` pr ON pr.id = r.id_province WHERE 1 ";
+
+	
+	if(isset($_POST['iTypeId']) && $_POST['iTypeId'] != ""){
+		$zSql .= " AND en.id = " . $_POST['iTypeId'];
+	}
+
+	if(isset($_POST['iRegionId']) && $_POST['iRegionId'] != 0){
+		$zSql .= " AND r.id = " . $_POST['iRegionId'];
+	}
+
+	if(isset($_POST['iDistrictId']) && $_POST['iDistrictId'] != 0){
+		$zSql .= " AND ds.id = " . $_POST['iDistrictId'];
+	}
+
+	if(isset($_POST['iCommuneId']) && $_POST['iCommuneId'] != 0){
+		$zSql .= " AND c.id = " . $_POST['iCommuneId'];
+	}
+
+	if(isset($_POST['zSearchAdvenced']) && $_POST['zSearchAdvenced'] != ""){
+		$zSql .= " AND n.nom like '%" . $_POST['zSearchAdvenced'] . "%'";
+	}
+
+	if(isset($_POST['zLocalite']) && $_POST['zLocalite'] != ""){
+		
+		$zSql .= " AND (pr.nom like '%" . $_POST['zLocalite'] . "%'";
+		$zSql .= " OR r.nom like '%" . $_POST['zLocalite'] . "%'";
+		$zSql .= " OR ds.nom like '%" . $_POST['zLocalite'] . "%'";
+		$zSql .= " OR c.nom like '%" . $_POST['zLocalite'] . "%')";
+	}
+	
+	$zSql .= " ORDER BY en.id ASC";
+
+	//echo $zSql ;
+
+    $toResult = $wpdb->get_results($zSql);
+
+	$toResult = json_encode($toResult);
+	 header( 'Content-Type: application/json' );
+    echo $toResult;
+	die();
+
+    //return $result;
+}
+
+add_action( 'wp_ajax_load_district', 'load_district' );
+
+function load_district(){
+
+	global $wpdb;
+
+	$iRegionId = (isset($_POST['iRegionId']))?$_POST['iRegionId']:0;
+
+	$zSql = "SELECT *
+			 FROM {$wpdb->prefix}district WHERE id_region = ".$iRegionId." ORDER BY nom ASC";
+
+    $toResult = $wpdb->get_results($zSql);
+
+	$zReturn = "<option value='0'>Tous</option>";
+	
+	foreach ($toResult as $oResult){
+		$zReturn .= '<option '.$zSelect.'  value="'.$oResult->id.'">'.$oResult->nom.'</option>';
+	}
+
+	echo $zReturn;
+
+    //return $result;
+}
+
+add_action( 'wp_ajax_load_commune', 'load_commune' );
+
+function load_commune(){
+
+	global $wpdb;
+
+	$iDistrictId = (isset($_POST['iDistrictId']))?$_POST['iDistrictId']:0;
+
+	$zSql = "SELECT *
+			 FROM {$wpdb->prefix}commune WHERE id_district = ".$iDistrictId." ORDER BY nom ASC";
+
+    $toResult = $wpdb->get_results($zSql);
+
+	$zReturn = "<option value='0'>Tous</option>";
+	
+	foreach ($toResult as $oResult){
+		$zReturn .= '<option '.$zSelect.'  value="'.$oResult->id.'">'.$oResult->nom.'</option>';
+	}
+
+	echo $zReturn;
+
+    //return $result;
+}
+
+function getMenuBreadcumbs(){
+	
+	
+	$toMenuLocations = get_nav_menu_locations();
+
+	$iMenuId = $toMenuLocations['primary']; 
+
+	$toPrimaryNav = wp_get_nav_menu_items($iMenuId); 
+
+	$iMenuId =  get_queried_object_id();
+
+	$zFilAriane = pll__("Accueil");
+
+	foreach ($toPrimaryNav as $oPrimaryNav){
+		if($oPrimaryNav->object_id == $iMenuId){
+			
+			if ($oPrimaryNav->menu_item_parent != 0){
+
+					$oPost   = get_post( $oPrimaryNav->menu_item_parent );
+					if($oPost->post_title != "Documentation"){
+						$zFilAriane .= " » " . $oPost->post_title;
+					}
+			}
+			
+			$zFilAriane .= " » <span style='color:#c9ba75;'><b>" . $oPrimaryNav->title . "<b></span>" ;
+		}
+	}
+	
+	echo $zFilAriane;
+}
+
+
+function default_icon() {
+  global $wp_customize;
+  $wp_customize->get_setting('site_icon',array (
+    'default' => WP_CONTENT_URL . '/wp-content/uploads/2020/favicons/favicon-16x16.png'
+  ));
+}
+add_action('customize_register','default_icon');

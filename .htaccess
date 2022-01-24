@@ -1,28 +1,19 @@
-#SetEnv PHP_VER 5_4
-
-# BEGIN W3TC Browser Cache
-<IfModule mod_deflate.c>
-    <IfModule mod_headers.c>
-        Header append Vary User-Agent env=!dont-vary
-    </IfModule>
-    <IfModule mod_filter.c>
-        AddOutputFilterByType DEFLATE text/css text/x-component application/x-javascript application/javascript text/javascript text/x-js text/html text/richtext image/svg+xml text/plain text/xsd text/xsl text/xml image/x-icon application/json
-    <IfModule mod_mime.c>
-        # DEFLATE by extension
-        AddOutputFilter DEFLATE js css htm html xml
-    </IfModule>
-    </IfModule>
-</IfModule>
-# END W3TC Browser Cache
-
 # BEGIN WordPress
+# Les directives (lignes) entre « BEGIN WordPress » et « END WordPress » sont générées
+# dynamiquement, et doivent être modifiées uniquement via les filtres WordPress.
+# Toute modification des directives situées entre ces marqueurs sera surchargée.
 <IfModule mod_rewrite.c>
 RewriteEngine On
-RewriteBase /
+RewriteBase /CNFI/
 RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /index.php [L]
+RewriteRule . /CNFI/index.php [L]
 </IfModule>
 
 # END WordPress
+
+# AuthName "Page d'administration CNFI prot�g�e."
+# AuthType Basic
+# AuthUserFile "/home/admin-cnfi/www/.htpasswd"
+# Require valid-user

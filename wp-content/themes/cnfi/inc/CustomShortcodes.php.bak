@@ -1,0 +1,143 @@
+<?php
+
+/**
+ * bloc blocToggle
+ * Colonne Bloc toogle
+ * @param mixed $args
+ * @param mixed $content
+ * @return
+ */
+add_shortcode('bloc-toogle-div', 'blocToggle');
+function blocToggle( $args , $content = null ){
+    
+    $zTitre     = ( isset($args['titre']) ) ? trim($args['titre']) : '';
+	$zShow		= ( isset($args['show']) ) ? trim($args['show']) : '';
+	$zClass		= ( isset($args['class']) ) ? trim($args['class']) : '';
+	$zOutput    = '';
+    $zOutput    .= '<div class="blocToggle '.$zShow.' '.$zClass.'">';
+	$zOutput    .= '	<div class="toggleBloc">';
+	$zOutput    .= '		<h2>'.$zTitre.'</h2>';
+	$zOutput    .= '			<div class="child"><p>';
+    $zOutput    .= do_shortcode( $content );
+	$zOutput    .= '			</div></p>';	
+	$zOutput    .= '	</div>';	
+    $zOutput    .= '</div>';
+    return $zOutput;
+}
+
+
+add_shortcode('blocTitrePrincipale', 'blocTitre');
+function blocTitre( $args , $content = null ){
+    
+	$zOutput    = '<p><strong style="text-transform: uppercase;font-size: 17px;">';
+    $zOutput    .= do_shortcode( $content );
+	$zOutput    .= '</strong></p>';	
+    return $zOutput;
+}
+
+
+add_shortcode('blocParagraphe', 'blocParagraphe');
+function blocParagraphe( $args , $content = null ){
+    
+	$zOutput    = '<p>';
+    $zOutput    .= do_shortcode( $content );
+	$zOutput    .= '</p>';	
+    return $zOutput;
+}
+
+
+add_shortcode('buttonhRef', 'buttonhRef');
+function buttonhRef( $args , $content = null ){
+    
+	$args = array_change_key_case( (array) $args, CASE_LOWER );
+
+	$zHref			= ( isset($args['zhref']) ) ? trim($args['zhref']) : '';
+	$ztarget		= ( isset($args['ztarget']) ) ? '_blank' : '';
+	$iCenter		= ( isset($args['icenter']) ) ? 1 : 0;
+
+	$zOutput		= "";
+	if($iCenter==1){
+		$zOutput		.= '<p style="text-align:center">';
+	}
+
+	$zOutput		.= '<a class="buttonP" href="'.$zHref.'" target="'.$ztarget.'">';
+    $zOutput		.= do_shortcode( $content );
+	$zOutput		.= '</a>';	
+
+	if($iCenter==1){
+		$zOutput		.= '</p>';
+	}
+    return $zOutput;
+}
+
+
+add_shortcode('DownlowadStrategieNationale', 'DownlowadStrategieNationale');
+function DownlowadStrategieNationale( $args , $content = null ){
+    
+	$args = array_change_key_case( (array) $args, CASE_LOWER );
+
+	$zRepeTeur		= ( isset($args['zrep']) ) ? trim($args['zrep']) : '';
+
+	$toFichierDownload = get_field($zRepeTeur);
+	$zOutput		= "";
+
+	foreach ($toFichierDownload as $oFichierDownload){
+		$zOutput		.= '<p style="text-align:center;">';
+		$zOutput		.= '<a class="" href="'.$oFichierDownload['fichier']['link'].'" target="_blank">';
+		$zOutput		.=  '<span class="fa fa-rounded fa-file-pdf-o" style="#bead5d;vertical-align:middle"> </span><span class"titreDoc">&nbsp;'.$oFichierDownload['document'].'</span>';
+		$zOutput		.= '</a>';	
+		$zOutput		.= '</p>';
+	}
+
+    return $zOutput;
+}
+
+
+add_shortcode('indicateurIFM', 'indicateurIFM');
+function indicateurIFM( $args , $content = null ){
+    
+	$args = array_change_key_case( (array) $args, CASE_LOWER );
+
+	$zRepeTeur		= ( isset($args['zrep']) ) ? trim($args['zrep']) : '';
+
+	$toContent = get_field($zRepeTeur);
+	$zOutput		= '<p><table class="ifm" border="0">';
+
+	foreach ($toContent as $oContent){
+		$zOutput		.= '<tr>
+								<td class="colInst"><span class="fa fa-rounded fa-arrow-right" style="#bead5d;vertical-align:middle"> </span>&nbsp;&nbsp;'.$oContent['intitule'].'</td>
+								<td class="colvalue">'.$oContent['valeur'].'</td>
+							</tr>';
+	}
+
+	$zOutput		.= '</table></p>';
+
+    return $zOutput;
+}
+
+
+
+add_shortcode('cadrelegalAffichage', 'cadrelegalAffichage');
+function cadrelegalAffichage( $args , $content = null ){
+    
+	$iType			= ( isset($args['iType']) ) ? trim($args['iType']) : '';
+	
+	$iId = get_the_ID();
+	$toRepeterCacreLegal = get_field('cadrelegal_repeteur', $iId);
+
+	$zOutput    = "<ul>";
+	foreach ($toRepeterCacreLegal as $oRepeterCacreLegal){
+		$zNomFichier = $oRepeterCacreLegal['nom_de_fichier'];
+		$zFichier = $oRepeterCacreLegal['fichier']['url'];
+
+		//print_r ($zFichier);
+		//die();
+		$zOutput    .= '<li>';	
+		$zOutput    .= '<a target="_blank" href="'.$zFichier.'">'.$zNomFichier.'</a>';	
+		$zOutput    .= '</li>';	
+	}
+
+	$zOutput    .= '</ul>';	
+    return $zOutput;
+}
+

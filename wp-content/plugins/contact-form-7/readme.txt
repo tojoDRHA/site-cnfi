@@ -1,12 +1,12 @@
 === Contact Form 7 ===
 Contributors: takayukister
-Donate link: http://contactform7.com/donate/
+Donate link: https://contactform7.com/donate/
 Tags: contact, form, contact form, feedback, email, ajax, captcha, akismet, multilingual
-Requires at least: 3.9
-Tested up to: 4.0
-Stable tag: 4.0.1
+Requires at least: 5.3
+Tested up to: 5.5
+Stable tag: 5.2.2
 License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 Just another contact form plugin. Simple but flexible.
 
@@ -14,124 +14,154 @@ Just another contact form plugin. Simple but flexible.
 
 Contact Form 7 can manage multiple contact forms, plus you can customize the form and the mail contents flexibly with simple markup. The form supports Ajax-powered submitting, CAPTCHA, Akismet spam filtering and so on.
 
-= Docs & Support =
+= Docs and support =
 
-You can find [docs](http://contactform7.com/docs/), [FAQ](http://contactform7.com/faq/) and more detailed information about Contact Form 7 on [contactform7.com](http://contactform7.com/). If you were unable to find the answer to your question on the FAQ or in any of the documentation, you should check the [support forum](http://wordpress.org/support/plugin/contact-form-7) on WordPress.org. If you can't locate any topics that pertain to your particular issue, post a new topic for it.
+You can find [docs](https://contactform7.com/docs/), [FAQ](https://contactform7.com/faq/) and more detailed information about Contact Form 7 on [contactform7.com](https://contactform7.com/). When you can't find the answer to your question on the FAQ or in any of the documentation, check the [support forum](https://wordpress.org/support/plugin/contact-form-7/) on WordPress.org. If you can't locate any topics that pertain to your particular issue, post a new topic for it.
 
-= Contact Form 7 Needs Your Support =
+= Contact Form 7 needs your support =
 
-It is hard to continue development and support for this free plugin without contributions from users like you. If you enjoy using Contact Form 7 and find it useful, please consider [__making a donation__](http://contactform7.com/donate/). Your donation will help encourage and support the plugin's continued development and better user support.
+It is hard to continue development and support for this free plugin without contributions from users like you. If you enjoy using Contact Form 7 and find it useful, please consider [making a donation](https://contactform7.com/donate/). Your donation will help encourage and support the plugin's continued development and better user support.
 
-= Recommended Plugins =
+= Privacy notices =
 
-The following are other recommended plugins by the author of Contact Form 7.
+With the default configuration, this plugin, in itself, does not:
 
-* [Flamingo](http://wordpress.org/extend/plugins/flamingo/) - With Flamingo, you can save submitted messages via contact forms in the database.
-* [Really Simple CAPTCHA](http://wordpress.org/extend/plugins/really-simple-captcha/) - Really Simple CAPTCHA is a simple CAPTCHA module which works well with Contact Form 7.
-* [Bogo](http://wordpress.org/extend/plugins/bogo/) - Bogo is a straight-forward multilingual plugin that doesn't cause headaches.
+* track users by stealth;
+* write any user personal data to the database;
+* send any data to external servers;
+* use cookies.
 
-= Translators =
+If you activate certain features in this plugin, the contact form submitter's personal data, including their IP address, may be sent to the service provider. Thus, confirming the provider's privacy policy is recommended. These features include:
 
-* Afrikaans (af) - Schalk Burger
-* Albanian (sq) - Olgi Zenullari
-* Arabic (ar) - Tarek Chaaban, Muhammed Lardi, Yaser Maadan
-* Armenian (hy_AM) - Emmanuelle Traduction
-* Azerbaijani (az) - Zaur Bayramov
-* Bangla (bn_BD) - SM Mehdi Akram
-* Basque (Euskara; eu) - karrikas
-* Belarusian (be_BY) - Igor Dubilei
-* Bosnian (bs_BA) - Vedran
-* Bulgarian (bg_BG) - Iliyan Darganov
-* Catalan (ca) - Jordi Sancho, Robert Buj, Jaume Aragay Badia
-* Central Kurdish (ckb) - Mahr Hassan
-* Chinese (China; zh_CN) - Soz, Keefe Dunn, Stella Hu
-* Chinese (Taiwan; zh_TW) - James Wu
-* Croatian (hr) - tolingo Translation Services, Marko Puskaric
-* Czech (cs_CZ) - Korry, Radovan Fiser, Tomas Vesely, Pavel Bilek, Vladislav Šenk
-* Danish (da_DK) - Jens Griebel, Georg S. Adamsen
-* Dutch (nl_NL) - Chris Devriese, Martin Hein, Rene, TenSheep, Tim de Hoog
-* Esperanto (eo_EO) - Arkadiusz Zychewicz
-* Estonian (et) - Peeter Rahuvarm, Egon Elbre
-* Finnish (fi) - Miika Turunen, Mediajalostamo, Jani Alha
-* French (fr_FR) - Jillij, Oncle Tom, Maître Mô, Emmanuel Simond, Hédi Sellami
-* Galician (gl_ES) - Arume Desenvolvementos Informáticos
-* Georgian (ka_GE) - Nodar Rocko Davituri
-* German (de_DE) - Marcel Spitau, Ivan Graf
-* Greek (el) - Nick Mouratidis, Pr. friedlich, John D. Dimoferlias
-* Gujarati (gu_IN) - Apoto
-* Haitian (ht) - Lam Tu Do
-* Hebrew (he_IL) - Yaron Ofer, Arik Galansky
-* Hindi (hi_IN) - Tarun Joshi, Ashish
-* Hungarian (hu_HU) - Andras Hirschler, János Csárdi-Braunstein, Farkas Győző
-* Indian Bengali (bn_IN) - Suman Manna
-* Indonesian (Bahasa Indonesia; id_ID) - Hendry Lee, Belajar Seo Indonesia
-* Irish (ga_IE) - Vikas Arora
-* Italian (it_IT) - Bruno, Gianni Diurno
-* Japanese (ja) - Takayuki Miyoshi
-* Korean (ko_KR) - Seong Eun Lee, Jong-In Kim, martian36
-* Latvian (lv) - Sandis Veinbergs
-* Lithuanian (lt_LT) - Ernestas Kardzys, Vincent G, Mantas Malcius
-* Macedonian (mk_MK) - Darko
-* Malay (ms_MY) - Zairul Azmil
-* Malayalam (ml_IN) - RAHUL.S.A
-* Maltese (mt_MT) - Ajoft Technologies
-* Norwegian (nb_NO) - Kjetil M. Bergem, aanvik.net, Peter Holme
-* Persian (Farsi; fa_IR) - Mohammad Musavi, Mohsen Firoozmandan, Ghaem Omidi
-* Polish (pl_PL) - Zbigniew Czernik, Daniel Fruzynski, RafalDesign, Bartosz Arendt
-* Portuguese (Brazil; pt_BR) - Leonardo Pinheiro, Henrique Vianna, Caciano Gabriel Batista, Gervásio Antônio, Gilvanilson Santos
-* Portuguese (Portugal; pt_PT) - Hugo Baeta, Pedro Nave, Pedro Mendonça
-* Punjabi (pa_IN) - Jasvinder Sing
-* Russian (ru_RU) - Dmitry Volotovich, Denis Voituk, kg69design
-* Romanian (ro_RO) - Stas Sushkov, Anunturi Jibo, Marius Olar, Inbox Translation
-* Serbian (sr_RS) - Vedran, Aleksandar Urošević
-* Sinhala (si_LK) - Nitin Aggarwal
-* Slovak (sk_SK) - Patrik Bóna, WordPress Slovakia
-* Slovene (sl_SI) - Mihael Simonič, Jani Roskar
-* Spanish (es_ES) - Jordi Sancho, Vladimir Prieto, Federico Mikaelian, Matias Baldanza, Carlos Agnese, Lourdes Cuesta
-* Swedish (sv_SE) - Fredrik Jonsson, the Swedish community
-* Tagalog (tl) - Rupert Agnew Lanuza, Hanne, Language Connect
-* Tamil (ta) - Nitin Aggarwal
-* Thai (th) - ToshiK, kazama, TG Knowledge
-* Turkish (tr_TR) - Roman Neumuller, Hasan Yılmaz, Emin Buğra Saral, Burak Yavuz
-* Ukrainian (uk) - Andrey Kovba, Ukrainian WordPress localization team, Myroslava Pabyrivska
-* Vietnamese (vi) - Thanh Hải, Hà, Khang Minh
+* reCAPTCHA ([Google](https://policies.google.com/?hl=en))
+* Akismet ([Automattic](https://automattic.com/privacy/))
+* Constant Contact ([Endurance International Group](https://www.endurance.com/privacy))
 
-If you have created your own language pack, or have an update of an existing one, you can send [gettext PO and MO files](http://codex.wordpress.org/Translating_WordPress) to [me](http://ideasilo.wordpress.com/about/) so that I can bundle it into Contact Form 7. You can download the latest [POT file](http://plugins.svn.wordpress.org/contact-form-7/trunk/languages/contact-form-7.pot), and [PO files in each language](http://plugins.svn.wordpress.org/contact-form-7/branches/languages/).
+= Recommended plugins =
+
+The following plugins are recommended for Contact Form 7 users:
+
+* [Flamingo](https://wordpress.org/plugins/flamingo/) by Takayuki Miyoshi - With Flamingo, you can save submitted messages via contact forms in the database.
+* [Bogo](https://wordpress.org/plugins/bogo/) by Takayuki Miyoshi - Bogo is a straight-forward multilingual plugin that doesn't cause headaches.
+
+= Translations =
+
+You can [translate Contact Form 7](https://contactform7.com/translating-contact-form-7/) on [translate.wordpress.org](https://translate.wordpress.org/projects/wp-plugins/contact-form-7).
 
 == Installation ==
 
 1. Upload the entire `contact-form-7` folder to the `/wp-content/plugins/` directory.
-1. Activate the plugin through the 'Plugins' menu in WordPress.
+1. Activate the plugin through the **Plugins** screen (**Plugins > Installed Plugins**).
 
-You will find 'Contact' menu in your WordPress admin panel.
+You will find **Contact** menu in your WordPress admin screen.
 
-For basic usage, you can also have a look at the [plugin homepage](http://contactform7.com/).
+For basic usage, have a look at the [plugin's website](https://contactform7.com/).
 
 == Frequently Asked Questions ==
 
 Do you have questions or issues with Contact Form 7? Use these support channels appropriately.
 
-1. [Docs](http://contactform7.com/docs/)
-1. [FAQ](http://contactform7.com/faq/)
-1. [Support Forum](http://wordpress.org/support/plugin/contact-form-7)
+1. [Docs](https://contactform7.com/docs/)
+1. [FAQ](https://contactform7.com/faq/)
+1. [Support forum](https://wordpress.org/support/plugin/contact-form-7/)
 
-[Support](http://contactform7.com/support/)
+[Support](https://contactform7.com/support/)
 
 == Screenshots ==
 
-1. screenshot-1.png 
+1. screenshot-1.png
 
 == Changelog ==
 
-For more information, see [Releases](http://contactform7.com/category/releases/).
+For more information, see [Releases](https://contactform7.com/category/releases/).
 
-= 4.0.1 =
+= 5.2.2 =
 
-* Fixed a bug that caused an error when creating new contact forms in some environment.
-* Translations for Portuguese and Croatian have been updated.
+* Fixed: A REST API call aborted with a PHP fatal error when the `WPCF7_USE_PIPE` constant value was false.
+* Introduces the `wpcf7_doing_it_wrong()` function.
+* Sets the `trigger_error()` function’s `$error_type` parameter explicitly.
+* Makes the `wpcf7_special_mail_tags` filter functions’ `$mail_tag` parameter optional.
 
-= 4.0 =
+= 5.2.1 =
 
-* The default mail template changed (see [Best Practice to Set Up Mail](http://contactform7.com/best-practice-to-set-up-mail/)).
-* Translations for Slovak, German, Turkish and Portuguese have been updated.
-* WordPress 3.9 or higher is required.
+* Makes the [contact-form-7 404 "Not Found"] message localizable.
+* REST API: Adds the `permission_callback` argument to every endpoint definition.
+* Flamingo: Uses `id()` instead of `id`, if available.
+* Fixed: The `free_text` option did not work correctly with the `exclusive` option.
+* Applies `wpcf7_mail_tag_replaced` filters even when the `$posted_data` is null.
+* Adds custom mail-tag replacement for quiz fields.
+* Admin: Updates the date column format in the list table.
+
+= 5.2 =
+
+* Submission: Introduces the `$posted_data_hash` and `$skip_spam_check` properties.
+* Submission: Introduces the `wpcf7_skip_spam_check` filter hook.
+* Contact form: Introduces the `pref()` method.
+* REST API: Adds parsed form-tags data to the response.
+* REST API: Deprecates the `wpcf7_ajax_json_echo` and `wpcf7_ajax_onload` filter hooks and introduces the `wpcf7_feedback_response` and `wpcf7_refill_response` filter hooks as alternatives.
+* Frontend CSS: Style rules for the response output refer to the `form` element’s `class` attribute.
+* Frontend JavaScript: Abolishes the use of jQuery events.
+* reCAPTCHA: Moves script code to a separate file.
+* reCAPTCHA: Changes the name of the field for reCAPTCHA response token from `g-recaptcha-response` to `_wpcf7_recaptcha_response`.
+
+= 5.1.9 =
+
+* Special mail-tags: Reflects WP timezone to `[_date]` and `[_time]` mail-tags.
+* WPCF7_FormTag: Reflects WP timezone to `get_date_option()` output.
+* User input validation: Strictly compares to boolean _false_.
+
+= 5.1.8 =
+
+* reCAPTCHA: Shows no warning on upgrading from v2 if the global sitekey is defined.
+* reCAPTCHA: Improves the frontend JavaScript coding.
+* Accessibility: Improves the response message markup.
+* Fixes the regular expression pattern in `wpcf7_is_tel()`.
+* Fixed: Character count was not reset after a successful submission.
+* Fixed: The fourth parameter of the `wpcf7_special_mail_tags` filter hook was not correctly set.
+
+= 5.1.7 =
+
+* CSS: Adds an explicit LTR direction style rule for code inputs.
+* Accessibility: Uses _Error_ instead of _ERROR_ in warnings.
+
+= 5.1.6 =
+
+* CSS: removes a style rule from the stylesheet that was unnecessary and conflicting with Twenty Twenty’s rules.
+* REST API: retrieves the contact form ID explicitly from the route parameters.
+
+= 5.1.5 =
+
+* Config Validator: New test item for the unavailable_html_elements error.
+* Config Validator: New test item for the attachments_overweight error.
+
+= 5.1.4 =
+
+* reCAPTCHA: introduces the WPCF7_RECAPTCHA_SITEKEY and WPCF7_RECAPTCHA_SECRET constants.
+* reCAPTCHA: Introduces the wpcf7_recaptcha_sitekey and wpcf7_recaptcha_secret filter hooks.
+* Adds $status parameter to the wpcf7_form_response_output filter.
+* Creates a nonce only when the submitter is a logged-in user.
+* Introduces WPCF7_ContactForm::unit_tag(), a public method that returns a unit tag.
+* reCAPTCHA: gives a different spam log message for cases where the response token is empty.
+* Acceptance Checkbox: supports the label_first option in an acceptance form-tag.
+
+= 5.1.3 =
+
+* Fixes a bug making it unable to unselect an option in the Mail tab panel.
+
+= 5.1.2 =
+
+* Constant Contact: Introduces the contact list selector.
+* Constant Contact: Introduces the constant_contact additional setting.
+* reCAPTCHA: Introduces the wpcf7_recaptcha_actions and wpcf7_recaptcha_threshold filter hooks.
+
+= 5.1.1 =
+
+* reCAPTCHA: Modifies the reaction to empty response tokens.
+
+= 5.1 =
+
+* Introduces the Constant Contact integration module.
+* Updates the reCAPTCHA module to support reCAPTCHA v3.
+* Adds Dark Mode style rules.
+
+== Upgrade Notice ==
