@@ -1,0 +1,3 @@
+[submodule ".git-hooks"]
+	path = .git-hooks
+	url = http://initmg:1n17m91n17m9@gitlab.init.mg/Init/Git-Hooks.git

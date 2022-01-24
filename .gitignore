@@ -1,2 +1,4 @@
 wp-config-db.php
-wp-config.php
+wp-content/uploads/
+integration/.sass-cache/
+wp-content/themes/lpc2/markers/created/
