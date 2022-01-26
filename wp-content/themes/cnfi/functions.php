@@ -3444,15 +3444,65 @@ function getAlaUne(){
 		$zReturn = '';
 		if( count($toAlaUne) > 0 ){
 
-			 $zReturn .= "<div class='et_pb_section_1 et_pb_section   et_section_regular section_has_divider et_pb_bottom_divider ' style='margin-bottom:25px'><div class='et_pb_row et_pb_row_0 '>";
+			 $zReturn .= "<div class='et_pb_section_1 et_pb_section   et_section_regular section_has_divider et_pb_bottom_divider ' style='margin-bottom:25px'><div class=''>";
 			 $zReturn  .= '<div class="enteteTitre center">
 								<div class="wrapper">
 									<h1 class="titrePage center">A la une</h1>        
 								</div>
 							</div>
-							<div class="contBloc owl2">
-								<div id="owl-demo2">';
-			foreach( $toAlaUne as $oAlaUne ){
+							<div class="contBloc1 owl3">
+								<div id="-">';
+
+			$zReturn  .= '					<div id="mixedSlider">
+												<div class="MS-content">
+													<div class="item">
+														<div class="imgTitle">
+															<h2 class="blogTitle">Animals</h2>
+															<img src="https://placeimg.com/500/300/animals" alt="" />
+														</div>
+														<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac tellus ex. Integer eu fringilla nisi. Donec id dapibus mauris, eget dignissim turpis ...</p>
+														<a href="#">Read More</a>
+													</div>
+													<div class="item">
+														<div class="imgTitle">
+															<h2 class="blogTitle">Arch</h2>
+															<img src="https://placeimg.com/500/300/arch" alt="" />
+														</div>
+													   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac tellus ex. Integer eu fringilla nisi. Donec id dapibus mauris, eget dignissim turpis ...</p>
+														<a href="#">Read More</a>
+													</div>
+													<div class="item">
+														<div class="imgTitle">
+															<h2 class="blogTitle">Nature</h2>
+															<img src="https://placeimg.com/500/300/nature" alt="" />
+														</div>
+													   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac tellus ex. Integer eu fringilla nisi. Donec id dapibus mauris, eget dignissim turpis ...</p>
+														<a href="#">Read More</a>
+													</div>
+													<div class="item">
+														<div class="imgTitle">
+															<h2 class="blogTitle">People</h2>
+															<img src="https://placeimg.com/500/300/people" alt="" />
+														</div>
+														<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac tellus ex. Integer eu fringilla nisi. Donec id dapibus mauris, eget dignissim turpis ...</p>
+														<a href="#">Read More</a>
+													</div>
+													<div class="item">
+														<div class="imgTitle">
+															<h2 class="blogTitle">Tech</h2>
+															<img src="https://placeimg.com/500/300/tech" alt="" />
+														</div>
+													   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac tellus ex. Integer eu fringilla nisi. Donec id dapibus mauris, eget dignissim turpis ...</p>
+														<a href="#">Read More</a>
+													</div>
+												   
+												</div>
+												<div class="MS-controls">
+													<button class="MS-left"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
+													<button class="MS-right"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
+												</div>
+											</div>'; 
+			/*foreach( $toAlaUne as $oAlaUne ){
 
 				if( trim($oAlaUne->post_title)!='' ){
 							
@@ -3491,19 +3541,12 @@ function getAlaUne(){
 								 </div>
 							  </div>';
 				}
-			}
-
-			$zReturn .= '</div>
-                <div class="customNavigation">
-                  <a class="btn prev">&nbsp;</a>
-                  <a class="btn next">&nbsp;</a>
-            </div>
-          </div>';
+			}*/
 
 		 $zReturn .= ' </div>
 						<br>
 					</div>
-					
+				</div>
 			  ';
 		}
                   

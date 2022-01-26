@@ -61,57 +61,7 @@ get_header();
 
 										<div class="sliderContainer">
 										<!-- multi slider -->
-
-													<div id="mixedSlider">
-												<div class="MS-content">
-													<div class="item">
-														<div class="imgTitle">
-															<h2 class="blogTitle">Animals</h2>
-															<img src="https://placeimg.com/500/300/animals" alt="" />
-														</div>
-														<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac tellus ex. Integer eu fringilla nisi. Donec id dapibus mauris, eget dignissim turpis ...</p>
-														<a href="#">Read More</a>
-													</div>
-													<div class="item">
-														<div class="imgTitle">
-															<h2 class="blogTitle">Arch</h2>
-															<img src="https://placeimg.com/500/300/arch" alt="" />
-														</div>
-													   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac tellus ex. Integer eu fringilla nisi. Donec id dapibus mauris, eget dignissim turpis ...</p>
-														<a href="#">Read More</a>
-													</div>
-													<div class="item">
-														<div class="imgTitle">
-															<h2 class="blogTitle">Nature</h2>
-															<img src="https://placeimg.com/500/300/nature" alt="" />
-														</div>
-													   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac tellus ex. Integer eu fringilla nisi. Donec id dapibus mauris, eget dignissim turpis ...</p>
-														<a href="#">Read More</a>
-													</div>
-													<div class="item">
-														<div class="imgTitle">
-															<h2 class="blogTitle">People</h2>
-															<img src="https://placeimg.com/500/300/people" alt="" />
-														</div>
-														<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac tellus ex. Integer eu fringilla nisi. Donec id dapibus mauris, eget dignissim turpis ...</p>
-														<a href="#">Read More</a>
-													</div>
-													<div class="item">
-														<div class="imgTitle">
-															<h2 class="blogTitle">Tech</h2>
-															<img src="https://placeimg.com/500/300/tech" alt="" />
-														</div>
-													   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac tellus ex. Integer eu fringilla nisi. Donec id dapibus mauris, eget dignissim turpis ...</p>
-														<a href="#">Read More</a>
-													</div>
-												   
-												</div>
-												<div class="MS-controls">
-													<button class="MS-left"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
-													<button class="MS-right"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
-												</div>
-										</div>
-
+											<?php getAlaUne();?>
 										<!-- multi slider -->
 										</div>
 
