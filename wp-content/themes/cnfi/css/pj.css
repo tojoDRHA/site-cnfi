@@ -24,7 +24,7 @@ h2{
 }
 
 .bt.btBleu{
-  background-color: #00b4ff!important;
+  background-color: #546776!important;
   color: #fff!important;
   font-family: 'LatoBlack',arial;
 }
@@ -228,7 +228,7 @@ h2{
    text-transform: none;
  }
  .header .ssMenu ul li a:hover, .header .ssMenu ul li a.active{
-  color: #00B4FF;
+  color: #546776;
  }
  .header .ssMenu.active, .header .ssMenu.hover{
    background: url("../images/icones/arrow-bottom.png") scroll right 5px no-repeat;
@@ -872,7 +872,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#26000000', e
   font-family: "LatoBlack",Arial;
   font-size: 17px;
   padding: 12px 25px 11px;
-  background: #00b4ff;
+  background: #546776;
   color: #ffffff!important;
   box-shadow: 0px 4px 0px #1282c5;
   -moz-box-shadow: 0px 4px 0px #1282c5;
@@ -1247,7 +1247,7 @@ section.container{
   display: none;
 }
 /*********** start definition color ***************/
-    /***start #00b4ff ****/
+    /***start #546776 ****/
 p a, .color, .header ul li a.active, .header ul li a:hover , .header .ssMenu.hover > a,
  .header .ssMenu.active > a, .bt2, .ttnews, .footer nav p.title,
  .wisi h2,.wisi h2 a, .blocTab .txt p strong, .blocTab .txt a.bx, .wisi .content p.paper2, .wisi .content .paper a,
@@ -1256,21 +1256,21 @@ p a, .color, .header ul li a.active, .header ul li a:hover , .header .ssMenu.hov
  .content .nav-tabs li a:hover, .listColor, .partenaire h3, .wisi .content .titre, .paginationList a, .paginationList span,
  .listActu .bloc .txt .lire, .wisi .content p.cheque, .mail, .mail:hover, .wisi .content .blocToggle .tel, .tableau td,
  .Qsn .mission .blocAbs .txt p, .Qsn .mission h3, .PopUp .titre, .PopUpmembre strong, .topDon a, .topDon address{
-  color: #00b4ff;
+  color: #546776;
  }
  
  .ttnews, .owl2.contBloc .txt, .logoInside a, .blocToggle form.wpcf7-form, .motcle, .topDon address{
-   border: solid 1px #00b4ff;
+   border: solid 1px #546776;
  }
 .line{
-  border-bottom: solid 2px #00b4ff;
+  border-bottom: solid 2px #546776;
 }
  .bt, .owl2 .txt, .blocToggle .listColor, .owl3 .customNavigation a, 
  .blocToggle .toggleBloc::before, .wisi .content ul.nav li,
  .blocList .lire, .paginationList a:hover, .paginationList a.active,
  .lien a:hover, .lien a.active, .wisi .content .formulaireDon .titre,
  .tableau th{
-   background-color: #00b4ff;
+   background-color: #546776;
  }
 
  .blocAbs, .wisi .blocBlue .blocAbs, .wisi .mission .blocAbs, .wisi .blocDon .bloc.last .blocAbs{
@@ -1282,7 +1282,7 @@ p a, .color, .header ul li a.active, .header ul li a:hover , .header .ssMenu.hov
   background: linear-gradient(to bottom,  rgba(0,180,255,0.7) 0%,rgba(0,192,255,0.7) 45%,rgba(0,180,255,0.7) 100%); 
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b300b4ff', endColorstr='#b300b4ff',GradientType=0 ); 
 }
-    /***end #00b4ff ****/
+    /***end #546776 ****/
 
     /***start #00c0ff ****/
 h2,.contBloc h3 span, .Blocmansory .bottom a, .wisiSoutenir h1{
@@ -1619,7 +1619,7 @@ h2,.contBloc h3 span, .Blocmansory .bottom a, .wisiSoutenir h1{
 
   .wisi .blocBlue .blocAbs .bt{
     background:#ffffff;
-    color: #00b4ff!important;
+    color: #546776!important;
     font-size: 14px;
      font-family: "LatoHeavy", Arial;
      box-shadow: none;
@@ -1838,7 +1838,7 @@ a.mail{
 }
 .tableau td{
   background:#eae9e9;
-  color: #00b4ff;
+  color: #546776;
   padding: 10px;
 }
 .wisiSoutenir h2{
@@ -1887,7 +1887,7 @@ a.mail{
 }
 .matinale .date{
   font-size: 18px;
-  color: #00b4ff;
+  color: #546776;
   font-family: "LatoBold", Arial;
   letter-spacing: 0.06em;
   background: url("../images/icones/calendar2.png") scroll no-repeat;
@@ -1943,7 +1943,7 @@ a.mail{
 }
 .content.matinale .nav-tabs > li > a:hover, .content.matinale .nav-tabs > li.active > a{
   color: #ffffff;
-  background: #00b4ff;
+  background: #546776;
  }
  .wisi .content.matinale ul.nav li{
   background: none;
@@ -2066,7 +2066,7 @@ a.mail{
 }
 .botContact .border{
   width: 1px;
-  background: #00b4ff;
+  background: #546776;
   height: 27px;
   display: inline-block;
   margin: 4px 12px 0;
@@ -2186,7 +2186,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80000000', e
 }
 .Qsn .mission .owl2 .txt hr{
   border: none;
- border-bottom: solid 1px #00b4ff;
+ border-bottom: solid 1px #546776;
  margin: 14px 0 10px;
 }
 .Qsn .wisi .blocAbs p{
@@ -2489,7 +2489,7 @@ font-size: 14px;
   max-width: 40px;
 }
 .topDon hr{
-  border-bottom: solid 2px #00b4ff;
+  border-bottom: solid 2px #546776;
   width: 50px;
   margin: -5px 0 13px;
 }
@@ -2952,7 +2952,7 @@ font-size: 14px;
     }
    .content .blocTab .responsive {
     padding: 6px 24px 5px;
-    background: #00b4ff ;
+    background: #546776 ;
     background-image: url("../images/icones/moins.png");
     background-position: 5px center;
     background-repeat: no-repeat;
@@ -2987,7 +2987,7 @@ font-size: 14px;
     background-image: url("../images/icones/arrow-top-blue.png");
     background-position: 5px center;
     background-repeat: no-repeat;
-    color: #00b4ff;
+    color: #546776;
    }
 
    .tab-pane.active .colFloat{
