@@ -27,7 +27,7 @@ get_header();
                 <div class="et_pb_module et_pb_slider et_slider_auto et_slider_speed_5000  et_pb_fullwidth_slider_0">
                   <div class="et_pb_slides">
 						<!-- Slides -->
-						<?php getSlide(); ?>
+						<?php /*getSlide();*/ ?>
 						<!-- fin slides -->
                   </div>
                 </div>

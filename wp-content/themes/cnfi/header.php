@@ -50,7 +50,7 @@
     <div id="page-container">
       <div id="top-header">
 		<div class="navbar-header" style="float:left">
-			<a href="/" class="navbar-brand" style="visibility: visible;"><img src="<?php echo get_template_directory_uri(); ?>/images/logo.png" alt="" class="fa-gg"></a>
+			<a href="/" class="navbar-brand" style="visibility: visible;"><img data-aos="fade-down" src="<?php echo get_template_directory_uri(); ?>/images/logo.png" width="70%" alt="" class="fa-gg"></a>
 		</div>
 		<div class="navbar-header-presidence" style="text-align:center">
 			<a style="position: relative;"><img src="<?php echo WP_CONTENT_URL?>/uploads/2020/09/2020-10-21.png" alt="Coordination Nationale de la Finance Inclusive" id="logo" class="fa-gg" data-height-percentage="60"></a>
