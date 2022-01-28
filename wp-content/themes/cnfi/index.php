@@ -48,8 +48,8 @@ get_header();
 								<?php 
 									/*getBlocTag("Galérie Photo",4); */
 									getBlocAccueil("Actualités sur le secteur",0); 
-									getBlocAccueil("Les projets",1); 
-									getBlocAccueil("Stratégies nationales",2); 
+									getBlocAccueil("Les projets",1,"projet-en-cours"); 
+									getBlocAccueil("Stratégies nationales",2,"strategies-nationales-dinclusion-financiere"); 
 									getBlocAccueil("Rubriques à thèmes",3); 
 									getBlocAccueil("Coin Juridiques",4); 
 								?>
@@ -194,9 +194,9 @@ get_header();
 								<?php 
 									getBlocMeteo(); 
 									getBlocAccueil("Galérie Photo",1);
-									getBlocAccueil("Indicateurs d'inclusion financière",2); 
-									getBlocAccueil("Données clés sur la microfinance",3); 
-									getBlocAccueil("Localisation géographique",4); 
+									getBlocAccueil("Indicateurs d'inclusion financière",2,"indicateurs-de-linclusion-financiere-a-madagascar"); 
+									getBlocAccueil("Données clés sur la microfinance",3,"statistiques"); 
+									getBlocAccueil("Localisation géographique",4,'localisation-geographique'); 
 									
 								?>
 						</div>

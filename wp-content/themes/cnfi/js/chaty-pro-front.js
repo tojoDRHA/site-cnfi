@@ -18,7 +18,7 @@
 			"bot": 25,
 			"side": 25,
 			"device": "desktop_active mobile_active",
-			"color": "#3B5998",
+			"color": "#546776",
 			"widget_size": "54",
 			"widget_type": "chat-base",
 			"custom_css": "",

@@ -3171,7 +3171,7 @@ add_filter('wp_nav_menu_objects', 'wpb_first_and_last_menu_class');
 
 
 
-function getBlocAccueil($_zTitre, $_iTab){
+function getBlocAccueil($_zTitre, $_iTab, $_zSlug=""){
 	    
 		//$zColorTab0 = 'background-image: -webkit-linear-gradient(top,#599675 0,#135f36 100%)';
 		$zColorTab0 = 'background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728);';
@@ -3186,6 +3186,21 @@ function getBlocAccueil($_zTitre, $_iTab){
 		//$iTab =  rand(0,4);
 
 		$zCcolor = $toColor[0];
+
+		$zListe = "";
+		if ($_zSlug != ""){
+			$page = get_page_by_path( $_zSlug );
+
+			$iId = $page->ID;
+
+			$toRepeterBlocAccueil = get_field('bloc_accueil', $iId);
+
+			
+			foreach ($toRepeterBlocAccueil as $oRepeterBlocAccueil){
+				$zListe .= "<li><a href='#'>".$oRepeterBlocAccueil['liste']."</a></li>";
+			}
+		}
+		
 		
 		$zReturn = '
 					<div class="gf_browser_unknown gform_wrapper_9 shadow">
@@ -3197,10 +3212,7 @@ function getBlocAccueil($_zTitre, $_iTab){
 										<div class="txt">
 											<h6 class="center" style="'.$zCcolor.'">'.pll__($_zTitre).'</h6>
 											<ul class="childBlock">
-                                                <li><a href="#">
-												Actualités du 06 janvier 2019</a></li>
-                                                <li><a href="#">Actualités du 06 janvier 2019</a></li>
-                                                <li><a href="#">Actualités du 06 janvier 2019</a></li>
+                                                '.$zListe.'
                                             </ul>
 											
 										</div>
