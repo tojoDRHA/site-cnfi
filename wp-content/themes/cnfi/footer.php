@@ -120,7 +120,7 @@
   width: 100%;
 }
 #mixedSlider .MS-content .item p {
-  font-size: 16px;
+  font-size: 14px;
   margin: 2px 10px 0 5px;
   text-indent: 15px;
 }

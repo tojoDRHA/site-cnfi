@@ -3196,7 +3196,7 @@ function getBlocAccueil($_zTitre, $_iTab){
 									<div class="blocAbs1">
 										<div class="txt">
 											<h6 class="center" style="'.$zCcolor.'">'.pll__($_zTitre).'</h6>
-											<ul>
+											<ul class="childBlock">
                                                 <li><a href="#">
 												Actualités du 06 janvier 2019</a></li>
                                                 <li><a href="#">Actualités du 06 janvier 2019</a></li>
@@ -3461,7 +3461,7 @@ function getAlaUne(){
 															<img src="https://placeimg.com/500/300/animals" alt="" />
 														</div>
 														<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac tellus ex. Integer eu fringilla nisi. Donec id dapibus mauris, eget dignissim turpis ...</p>
-														<a href="#">Read More</a>
+														<a href="#">Lire la suite</a>
 													</div>
 													<div class="item">
 														<div class="imgTitle">
@@ -3469,7 +3469,7 @@ function getAlaUne(){
 															<img src="https://placeimg.com/500/300/arch" alt="" />
 														</div>
 													   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac tellus ex. Integer eu fringilla nisi. Donec id dapibus mauris, eget dignissim turpis ...</p>
-														<a href="#">Read More</a>
+														<a href="#">Lire la suite</a>
 													</div>
 													<div class="item">
 														<div class="imgTitle">
@@ -3477,7 +3477,7 @@ function getAlaUne(){
 															<img src="https://placeimg.com/500/300/nature" alt="" />
 														</div>
 													   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac tellus ex. Integer eu fringilla nisi. Donec id dapibus mauris, eget dignissim turpis ...</p>
-														<a href="#">Read More</a>
+														<a href="#">Lire la suite</a>
 													</div>
 													<div class="item">
 														<div class="imgTitle">
@@ -3485,7 +3485,7 @@ function getAlaUne(){
 															<img src="https://placeimg.com/500/300/people" alt="" />
 														</div>
 														<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac tellus ex. Integer eu fringilla nisi. Donec id dapibus mauris, eget dignissim turpis ...</p>
-														<a href="#">Read More</a>
+														<a href="#">Lire la suite</a>
 													</div>
 													<div class="item">
 														<div class="imgTitle">
@@ -3493,7 +3493,7 @@ function getAlaUne(){
 															<img src="https://placeimg.com/500/300/tech" alt="" />
 														</div>
 													   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac tellus ex. Integer eu fringilla nisi. Donec id dapibus mauris, eget dignissim turpis ...</p>
-														<a href="#">Read More</a>
+														<a href="#">Lire la suite</a>
 													</div>
 												   
 												</div>

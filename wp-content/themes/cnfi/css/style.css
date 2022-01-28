@@ -255,6 +255,12 @@ body #gform_wrapper_tojo {
 	font-family: 'Lato', Helvetica, Arial, Lucida, sans-serif;	
 }
 
+ul.childBlock li {
+    background: url(../images/icones/next_pj.png) scroll left 8px no-repeat;
+    padding-left: 5px;
+    margin-left: 14px;
+}
+
 .gform_body ul{
     padding: 10px 0;
 }
@@ -271,7 +277,7 @@ body #gform_wrapper_tojo {
     padding-left: 10px;
     /*border-bottom: 1px solid #757170;*/
     color: #757170;
-    font-size: 16px;
+    font-size: 14px;
     transition: all .2s ease-in-out;
     display: block;
 }
