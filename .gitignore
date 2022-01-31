@@ -1,4 +1,5 @@
 wp-config.php
-wp-content/uploads/
+wp-content/uploads/2020/*
+wp-content/uploads/2021/*
 integration/.sass-cache/
 wp-content/themes/lpc2/markers/created/
