@@ -3432,7 +3432,7 @@ function getBlocTag(){
 function getAlaUne(){
 	   
 		$args	= array (
-					'post_type'		=> 'documentation',
+					'post_type'		=> 'actualite',
 					'orderby'   	=> 'date',
 					'order' 		=> 'DESC',
 					'post_status' 	=> 'publish',
@@ -3466,54 +3466,50 @@ function getAlaUne(){
 								<div id="-">';
 
 			$zReturn  .= '					<div id="mixedSlider">
-												<div class="MS-content">
-													<div class="item">
-														<div class="imgTitle">
-															<h2 class="blogTitle">Animals</h2>
-															<img src="https://placeimg.com/500/300/animals" alt="" />
-														</div>
-														<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac tellus ex. Integer eu fringilla nisi. Donec id dapibus mauris, eget dignissim turpis ...</p>
-														<a href="#">Lire la suite</a>
-													</div>
-													<div class="item">
-														<div class="imgTitle">
-															<h2 class="blogTitle">Arch</h2>
-															<img src="https://placeimg.com/500/300/arch" alt="" />
-														</div>
-													   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac tellus ex. Integer eu fringilla nisi. Donec id dapibus mauris, eget dignissim turpis ...</p>
-														<a href="#">Lire la suite</a>
-													</div>
-													<div class="item">
-														<div class="imgTitle">
-															<h2 class="blogTitle">Nature</h2>
-															<img src="https://placeimg.com/500/300/nature" alt="" />
-														</div>
-													   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac tellus ex. Integer eu fringilla nisi. Donec id dapibus mauris, eget dignissim turpis ...</p>
-														<a href="#">Lire la suite</a>
-													</div>
-													<div class="item">
-														<div class="imgTitle">
-															<h2 class="blogTitle">People</h2>
-															<img src="https://placeimg.com/500/300/people" alt="" />
-														</div>
-														<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac tellus ex. Integer eu fringilla nisi. Donec id dapibus mauris, eget dignissim turpis ...</p>
-														<a href="#">Lire la suite</a>
-													</div>
-													<div class="item">
-														<div class="imgTitle">
-															<h2 class="blogTitle">Tech</h2>
-															<img src="https://placeimg.com/500/300/tech" alt="" />
-														</div>
-													   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac tellus ex. Integer eu fringilla nisi. Donec id dapibus mauris, eget dignissim turpis ...</p>
-														<a href="#">Lire la suite</a>
-													</div>
+												<div class="MS-content">' ;
+													
+			foreach( $toAlaUne as $oAlaUne ){
+
+				if( trim($oAlaUne->post_title)!='' ){
+							
+					$zTitre			= $oAlaUne->post_title;
+					$zContenu		= $oAlaUne->post_content; 
+					$bAlaUne		= get_field('a_la_une', $oAlaUne->ID);
+					$zDate			= get_field('date_actualite', $oAlaUne->ID);
+					$zPhoto			= get_field('photo_actu', $oAlaUne->ID);
+					$zCatergorie	= get_field('categorie_actu', $oAlaUne->ID);
+					$zResume		= get_field('resume_actualite', $oAlaUne->ID);
+					$zPermalink = get_permalink( $oAlaUne->ID ) ;
+
+
+					$zContenu = truncate($zResume,250);
+			
+					$zReturn  .= '												
+									<div class="item">
+										<div class="imgTitle">
+											<h2 class="blogTitle">'.$zCatergorie.'</h2>
+											<img src="'.$zPhoto.'" alt="" />
+										</div>
+										<p>'.$zContenu.'</p>
+										<a href="'.get_permalink( $oAlaUne->ID ).'">'.pll__("lire la suite").'&gt;&gt;</a>
+									</div> ';
+			
+			
+
+					
+	
+				}
+			}
+
+			$zReturn  .= '										
 												   
-												</div>
-												<div class="MS-controls">
-													<button class="MS-left"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
-													<button class="MS-right"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
-												</div>
-											</div>'; 
+								</div>
+								<div class="MS-controls">
+									<button class="MS-left"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
+									<button class="MS-right"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
+								</div>
+							</div>'; 
+
 			/*foreach( $toAlaUne as $oAlaUne ){
 
 				if( trim($oAlaUne->post_title)!='' ){
@@ -3565,6 +3561,95 @@ function getAlaUne(){
 
        
 
+		echo $zReturn;
+			
+}
+
+function getArchive(){
+	   
+		$args	= array (
+					'post_type'		=> 'actualite',
+					'orderby'   	=> 'date',
+					'order' 		=> 'DESC',
+					'post_status' 	=> 'publish',
+					'orderby'		=> 'meta_value_num',
+					'order'			=> 'ASC',
+					'nopaging'		=> true,
+					'meta_query'	=> array(
+						'relation'		=> 'AND',
+						array(
+							'key'		=> 'a_la_une',
+							'value'		=> '0',
+							'compare'	=> '='
+						)
+					)
+				);
+
+		$toActusArchivePosts     = new WP_Query( $args );
+
+		$toActusArchive = $toActusArchivePosts->posts;
+
+		$zReturn = '';
+		if( count($toActusArchive) > 0 ){
+
+			
+													
+			foreach( $toActusArchive as $oActusArchive ){
+
+				if( trim($oActusArchive->post_title)!='' ){
+							
+					$zTitre			= $oActusArchive->post_title;
+					$zContenu		= $oActusArchive->post_content; 
+					$bActusArchive		= get_field('a_la_une', $oActusArchive->ID);
+					$zDate			= get_field('date_actualite', $oActusArchive->ID);
+					$zPhoto			= get_field('photo_actu', $oActusArchive->ID);
+					$zCatergorie	= get_field('categorie_actu', $oActusArchive->ID);
+					$zResume		= get_field('resume_actualite', $oActusArchive->ID);
+					$zPermalink		= get_permalink( $oActusArchive->ID ) ;
+
+
+					$zResume = truncate($zResume,150);
+			
+					$zReturn  .= '												
+									<div class="colFloat shadowListHome clearFix">
+													<div class="imgPt Parent-image">
+														<a href="#" title="" class="image" style="background-image:url(\''.$zPhoto.'\')"></a>
+													</div>
+													<div class="txt">
+														<p class="titre"><a href="#" title="">'.$zCatergorie.'</a></p>
+														<hr>
+														<h2><a href="#" title="">'.$zTitre.'</a></h2>
+														<p class="short1">'.$zResume.'</p>
+														<ul class="share">     
+															 <li><a href="#" class="fb"></a><span>2<em></em></span></li>
+															 <li><a href="#" class="tw"></a><span>2<em></em></span></li>
+															 <li><a href="#" class="gg"></a><span>2<em></em></span></li>
+														 </ul>
+														<span class="lire">'.pll__("lire la suite").'&gt;&gt;</span>
+													</div>
+												</div> ';
+			
+				}
+			}
+
+			/*
+			
+			<p class="paginationList">
+				<a href="#" class="first">&nbsp;</a>
+				<a href="#" class="prev">&nbsp;</a>
+				<a href="#" class="active">1</a>
+				<a href="#">2</a>
+				<a href="#">3</a>
+				<span>...</span>
+				<a href="#">54</a>
+				<a href="#" class="next">&nbsp;</a>
+				<a href="#" class="last">&nbsp;</a>
+			</p>
+			
+			*/
+
+		}
+                
 		echo $zReturn;
 			
 }

@@ -5,6 +5,44 @@
     
 /*  */
 
+add_action( 'init', 'registerCptActualite' );
+function registerCptActualite() {
+	$labels = array( 
+		'name' => _x( 'Actualité', 'Actualite' ),
+		'singular_name' => _x( 'Actualite', 'Actualite' ),
+		'add_new' => _x( 'Ajouter', 'Actualite' ),
+		'add_new_item' => _x( 'Ajouter une actualité', 'Actualite' ),
+		'edit_item' => _x( 'Editer une actualité', 'Actualite' ),
+		'new_item' => _x( 'Nouvelle actualité', 'Actualite' ),
+		'view_item' => _x( 'Voir une actualité', 'Actualite' ),
+		'search_items' => _x( 'Rechercher une actualité', 'Actualite' ),
+		'not_found' => _x( 'Aucune une actualité trouvée', 'Actualite' ),
+		'not_found_in_trash' => _x( 'Aucune une actualité dans la corbeille', 'Actualite' ),
+		'parent_item_colon' => _x( 'une actualité parent :', 'Actualite' ),
+		'menu_name' => _x( 'Actualités', 'Actualite' ),
+	);
+
+	$args = array( 
+		'labels' => $labels,
+		'hierarchical' => false,
+		'description' => 'Les actualités',
+		'supports' => array( 'title', 'editor', 'thumbnail', 'custom-fields', 'revisions' ),
+		'public' => true,
+		'show_ui' => true,
+		'show_in_menu' => true,
+		'menu_position' => 5,
+		'show_in_nav_menus' => true,
+		'publicly_queryable' => true,
+		'exclude_from_search' => false,
+		'has_archive' => true,
+		'query_var' => true,
+		'can_export' => true,
+		'rewrite' => true,
+		'capability_type' => 'post'
+	);
+	register_post_type( 'Actualite', $args );
+}
+
 
 add_action( 'init', 'registerCptSlide' );
 function registerCptSlide() {
@@ -332,42 +370,3 @@ function custom_banque_column( $column, $post_id ) {
 
     }
 }
-
-
-/*add_action( 'init', 'registerCptAlaUne' );
-function registerCptAlaUne() {
-	$labels = array( 
-		'name' => _x( 'Actualité à la une', 'AlaUne' ),
-		'singular_name' => _x( 'AlaUne', 'AlaUne' ),
-		'add_new' => _x( 'Ajouter', 'AlaUne' ),
-		'add_new_item' => _x( 'Ajouter une actualité à la Une', 'AlaUne' ),
-		'edit_item' => _x( 'Editer une actualité à la Une', 'AlaUne' ),
-		'new_item' => _x( 'Nouvelle actualité à la Une', 'AlaUne' ),
-		'view_item' => _x( 'Voir une actualité à la Une', 'AlaUne' ),
-		'search_items' => _x( 'Rechercher une actualité à la Une', 'AlaUne' ),
-		'not_found' => _x( 'Aucune une actualité à la Une trouvée', 'AlaUne' ),
-		'not_found_in_trash' => _x( 'Aucune une actualité à la Une dans la corbeille', 'AlaUne' ),
-		'parent_item_colon' => _x( 'une actualité à la Une parent :', 'AlaUne' ),
-		'menu_name' => _x( 'Actualités à la une', 'AlaUne' ),
-	);
-
-	$args = array( 
-		'labels' => $labels,
-		'hierarchical' => false,
-		'description' => 'Les actualités à la Une',
-		'supports' => array( 'title', 'editor', 'thumbnail', 'custom-fields', 'revisions' ),
-		'public' => true,
-		'show_ui' => true,
-		'show_in_menu' => true,
-		'menu_position' => 5,
-		'show_in_nav_menus' => true,
-		'publicly_queryable' => true,
-		'exclude_from_search' => false,
-		'has_archive' => true,
-		'query_var' => true,
-		'can_export' => true,
-		'rewrite' => true,
-		'capability_type' => 'post'
-	);
-	register_post_type( 'AlaUne', $args );
-}*/
