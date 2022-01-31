@@ -84,7 +84,7 @@
 	<script>
 		$('#mixedSlider').multislider({
 			duration: 750,
-			interval: 0
+			interval: 5000
 		});
 </script>
     <!-- .container -->
