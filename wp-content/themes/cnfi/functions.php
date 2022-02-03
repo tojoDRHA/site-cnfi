@@ -3169,8 +3169,6 @@ function wpb_first_and_last_menu_class($items) {
 }
 add_filter('wp_nav_menu_objects', 'wpb_first_and_last_menu_class');
 
-
-
 function getBlocAccueil($_zTitre, $_iTab, $_zSlug=""){
 	    
 		//$zColorTab0 = 'background-image: -webkit-linear-gradient(top,#599675 0,#135f36 100%)';
@@ -3221,6 +3219,77 @@ function getBlocAccueil($_zTitre, $_iTab, $_zSlug=""){
 							</div>
 						</div>
 					</div>';
+		echo $zReturn;
+}
+
+
+function getBlocAccueilActuSecteur($_zTitre){
+	    
+		$zColorTab0 = 'background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728);';
+		
+
+		$toColor = array ($zColorTab0);
+
+		$zCcolor = $toColor[0];
+
+		$args	= array (
+					'post_type'		=> 'Accueil',
+					'orderby'   	=> 'rand',
+					'offset'		=> '1',
+					'post_status' 	=> 'publish',
+					'nopaging'		=> true
+				);
+
+		$toHomePosts     = new WP_Query( $args );
+
+		$toHome = $toHomePosts->posts;
+
+		/*echo "<pre>";
+		print_r ($toHome);
+		echo "</pre>";
+		die();*/
+		$zReturn = '';
+		$zPhoto = '';
+		$iIncrement = 0;
+		if( count($toHome) > 0 ){
+			foreach( $toHome as $oHome ){
+
+				if( trim($oHome->post_title)!='' ){
+							
+					$zTitre = $oHome->post_title;
+					$zContenu = truncate($oHome->post_content,300);
+
+					$oImage = get_field('actualite_du_secteur_photo', $oHome->ID);
+					//print_r ($oImage);
+					$zNom   = get_field('actualite_du_secteur_nom', $oHome->ID);
+		
+		
+						$zReturn = '
+									<div class="gf_browser_unknown gform_wrapper_9 shadow">
+										<div class="gform_body">
+											<div class="bloc blocBlue1 actuSecteur">
+												<div class="imgPt Parent-image11">
+													<a href="#" title="" class="image011"></a>
+													<div class="blocAbs1">
+														<div class="txt">
+															<h6 class="center" style="'.$zCcolor.'">'.pll__($_zTitre).'</h6>
+															<div class="img" style="padding:0px;">
+																<img class="lastEchosImg card-img-top" src="'.$oImage['sizes']['medium'].'" alt="Card image cap">
+															</div>
+															<span><p style="padding: 9px;text-align: justify;">'.$zNom.'</p></span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>';
+
+				}
+
+				$iIncrement++;
+			}
+
+		}
 		echo $zReturn;
 }
 

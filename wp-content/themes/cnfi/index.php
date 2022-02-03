@@ -47,7 +47,7 @@ get_header();
 						<div class="et_pb_column et_pb_column_1_4"  data-aos="">
 								<?php 
 									/*getBlocTag("Galérie Photo",4); */
-									getBlocAccueil("Actualités sur le secteur",0); 
+									getBlocAccueilActuSecteur("Actualités sur le secteur"); 
 									getBlocAccueil("Les projets",1,"projet-en-cours"); 
 									getBlocAccueil("Stratégies nationales",2,"strategies-nationales-dinclusion-financiere"); 
 									getBlocAccueil("Rubriques à thèmes",3); 
