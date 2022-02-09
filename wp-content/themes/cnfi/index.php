@@ -50,8 +50,8 @@ get_header();
 									getBlocAccueilActuSecteur("Actualités sur le secteur"); 
 									getBlocAccueil("Les projets",1,"projet-en-cours"); 
 									getBlocAccueil("Stratégies nationales",2,"strategies-nationales-dinclusion-financiere"); 
-									getBlocAccueil("Rubriques à thèmes",3); 
-									getBlocAccueil("Coin Juridiques",4); 
+									getBlocAccueil("Rubriques à thèmes",3,'rubriques-a-themes'); 
+									getBlocAccueil("Coin Juridiques",4,'coin-juridiques'); 
 								?>
 						</div>
 						<div class="et_pb_column  aos-init " style="width:58%;margin-left:17px;">
@@ -75,7 +75,7 @@ get_header();
 						<div style="float:right;" class="et_pb_column et_pb_column_1_4"  data-aos="">
 								<?php 
 									getBlocMeteo(); 
-									getBlocAccueil("Galérie Photo",1);
+									getBlocAccueil("Gallérie Photos",1,'galerie-photo');
 									getBlocAccueil("Indicateurs d'inclusion financière",2,"indicateurs-de-linclusion-financiere-a-madagascar"); 
 									getBlocAccueil("Données clés sur la microfinance",3,"statistiques"); 
 									getBlocAccueil("Localisation géographique",4,'localisation-geographique'); 

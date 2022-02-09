@@ -3193,9 +3193,10 @@ function getBlocAccueil($_zTitre, $_iTab, $_zSlug=""){
 
 			$toRepeterBlocAccueil = get_field('bloc_accueil', $iId);
 
-			
-			foreach ($toRepeterBlocAccueil as $oRepeterBlocAccueil){
-				$zListe .= "<li><a href='#'>".$oRepeterBlocAccueil['liste']."</a></li>";
+			if(isset($toRepeterBlocAccueil)){
+				foreach ($toRepeterBlocAccueil as $oRepeterBlocAccueil){
+					$zListe .= "<li><a href='#'>".$oRepeterBlocAccueil['liste']."</a></li>";
+				}
 			}
 		}
 		
