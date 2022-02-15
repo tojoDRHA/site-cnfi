@@ -3169,7 +3169,7 @@ function wpb_first_and_last_menu_class($items) {
 }
 add_filter('wp_nav_menu_objects', 'wpb_first_and_last_menu_class');
 
-function getBlocAccueil($_zTitre, $_iTab, $_zSlug=""){
+function getBlocAccueil($_zTitre, $_iTab, $_zSlug="",$_target=""){
 	    
 		//$zColorTab0 = 'background-image: -webkit-linear-gradient(top,#599675 0,#135f36 100%)';
 		$zColorTab0 = 'background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728);';

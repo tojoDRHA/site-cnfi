@@ -30,14 +30,6 @@ get_header();
 			  <div class="et_pb_section et_section_regular section_has_divider et_pb_bottom_divider">
 					
 					<div class=" et_pb_row et_pb_row_0" >
-						<!-- start filarianne -->
-						<div class="wrap">
-						  <p class="filarianne">
-						  <?php
-								getMenuBreadcumbs();
-						   ?>
-						   </p>
-						</div>
 						<!-- end filarianne-->
 						<div class="aos-animate">
 							<!--<div class="enteteTitre center">
