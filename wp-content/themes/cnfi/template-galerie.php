@@ -68,7 +68,8 @@ get_header();
             <!-- .entry-content --> </article>
           <!-- .et_pb_post --> </div>
         <!-- #main-content -->
-		
+		 <script src='<?php echo WP_CONTENT_URL?>/themes/cnfi/js/masonry.min.js?ver=4.2.2' id='masonry-js'></script>
+		 <script src='<?php echo WP_PLUGIN_URL?>/foogallery/extensions/default-templates/shared/js/foogallery.js?ver=2.1.33' id='foogallery-core-js'></script>
          <?php
 			get_footer();
 		 ?>
