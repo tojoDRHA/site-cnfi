@@ -3169,6 +3169,37 @@ function wpb_first_and_last_menu_class($items) {
 }
 add_filter('wp_nav_menu_objects', 'wpb_first_and_last_menu_class');
 
+
+function valideChaine($zChaine)
+{
+	  /*$zChaine = preg_replace('`\s+`', '-', trim($zChaine));
+	  $zChaine = str_replace("'", "-", $zChaine);
+	  $zChaine = str_replace(",", "-", $zChaine);
+	  $zChaine = preg_replace("`_+`", '-', trim($zChaine));
+	  $zChaine =strtr($zChaine,"ÀÁÂàÄÅàáâàäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ","aaaaaaaaaaaaooooooooooooeeeeeeeecciiiiiiiiuuuuuuuuynn");
+	  return ($zChaine);*/
+
+		/* Force the file name in UTF-8 (encoding Windows / OS X / Linux) */
+		$filename = mb_convert_encoding($zChaine, "UTF-8");
+
+		$char_not_clean = array('/À/','/Á/','/Â/','/Ã/','/Ä/','/Å/','/Ç/','/È/','/É/','/Ê/','/Ë/','/Ì/','/Í/','/Î/','/Ï/','/Ò/','/Ó/','/Ô/','/Õ/','/Ö/','/Ù/','/Ú/','/Û/','/Ü/','/Ý/','/à/','/á/','/â/','/ã/','/ä/','/å/','/ç/','/è/','/é/','/ê/','/ë/','/ì/','/í/','/î/','/ï/','/ð/','/ò/','/ó/','/ô/','/õ/','/ö/','/ù/','/ú/','/û/','/ü/','/ý/','/ÿ/', '/©/');
+		$clean = array('a','a','a','a','a','a','c','e','e','e','e','i','i','i','i','o','o','o','o','o','u','u','u','u','y','a','a','a','a','a','a','c','e','e','e','e','i','i','i','i','o','o','o','o','o','o','u','u','u','u','y','y','copy');
+
+		$friendly_filename = preg_replace($char_not_clean, $clean, $filename);
+
+
+		/* After replacement, we destroy the last residues */
+		$friendly_filename = utf8_decode($friendly_filename);
+		$friendly_filename = preg_replace('/\?/', '', $friendly_filename);
+
+
+		/* Lowercase */
+		$friendly_filename = strtolower($friendly_filename);
+		$friendly_filename = str_replace(" ","-",$friendly_filename);
+
+		return $friendly_filename;
+}
+
 function getBlocAccueil($_zTitre, $_iTab, $_zSlug="",$_target=""){
 	    
 		//$zColorTab0 = 'background-image: -webkit-linear-gradient(top,#599675 0,#135f36 100%)';
@@ -3195,7 +3226,17 @@ function getBlocAccueil($_zTitre, $_iTab, $_zSlug="",$_target=""){
 
 			if(isset($toRepeterBlocAccueil)){
 				foreach ($toRepeterBlocAccueil as $oRepeterBlocAccueil){
-					$zListe .= "<li><a href='#'>".$oRepeterBlocAccueil['liste']."</a></li>";
+
+					$zHashTag = "";
+					if($_target==1){
+
+						$zSlug = $oRepeterBlocAccueil['liste'];
+						$zSlug = valideChaine($zSlug);
+
+
+						$zHashTag = "#" . $zSlug;
+					}
+					$zListe .= "<li><a href='".get_permalink( $iId ).$zHashTag."'>".$oRepeterBlocAccueil['liste']."</a></li>";
 				}
 			}
 		}
@@ -3679,6 +3720,22 @@ function getArchive(){
 
 
 					$zResume = truncate($zResume,150);
+
+
+					/*$zReturn  .= '												
+									<div class="colFloat shadowListHome clearFix">
+													<div class="imgPt Parent-image">
+														<a href="#" title="" class="image" style="background-image:url(\''.$zPhoto.'\')"></a>
+													</div>
+													<div class="txt">
+														<p class="titre"><a href="#" title="">'.$zCatergorie.'</a></p>
+														<hr>
+														<h2><a href="#" title="">'.$zTitre.'</a></h2>
+														<p class="short1">'.$zResume.'</p>'
+														.do_shortcode("[cn-social-icon]").'
+														<span class="lire">'.pll__("lire la suite").'&gt;&gt;</span>
+													</div>
+												</div> ';*/
 			
 					$zReturn  .= '												
 									<div class="colFloat shadowListHome clearFix">
@@ -3691,9 +3748,9 @@ function getArchive(){
 														<h2><a href="#" title="">'.$zTitre.'</a></h2>
 														<p class="short1">'.$zResume.'</p>
 														<ul class="share">     
-															 <li><a href="#" class="fb"></a><span>2<em></em></span></li>
-															 <li><a href="#" class="tw"></a><span>2<em></em></span></li>
-															 <li><a href="#" class="gg"></a><span>2<em></em></span></li>
+															 <li><a href="#" onClick="fbShare(\''.get_permalink( $oActusArchive->ID ).'\', \''.$zTitre.'\', \''.$zResume.'\', \''.$zPhoto.'\', 800, 600)" class="fb"></a></li>
+															 <li><a href="#" class="tw"></a></li>
+															 <li><a href="#" class="gg"></a></li>
 														 </ul>
 														<span class="lire">'.pll__("lire la suite").'&gt;&gt;</span>
 													</div>

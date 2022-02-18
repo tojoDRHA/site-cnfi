@@ -48,7 +48,7 @@ get_header();
 								<?php 
 									/*getBlocTag("Galérie Photo",4); */
 									getBlocAccueilActuSecteur("Actualités sur le secteur"); 
-									getBlocAccueil("Les projets",1,"projet-en-cours"); 
+									getBlocAccueil("Les projets",1,"projet-en-cours",1); 
 									getBlocAccueil("Stratégies nationales",2,"strategies-nationales-dinclusion-financiere"); 
 									getBlocAccueil("Rubriques à thèmes",3,'rubriques-a-themes'); 
 									getBlocAccueil("Coin Juridiques",4,'coin-juridiques'); 

@@ -12,9 +12,10 @@ function blocToggle( $args , $content = null ){
     
     $zTitre     = ( isset($args['titre']) ) ? trim($args['titre']) : '';
 	$zShow		= ( isset($args['show']) ) ? trim($args['show']) : '';
+	$zId		= ( isset($args['id']) ) ? trim($args['id']) : '';
 	$zClass		= ( isset($args['class']) ) ? trim($args['class']) : '';
 	$zOutput    = '';
-    $zOutput    .= '<div class="blocToggle '.$zShow.' '.$zClass.'">';
+    $zOutput    .= '<div class="blocToggle '.$zShow.' '.$zClass.'" id="'.$zId.'">';
 	$zOutput    .= '	<div class="toggleBloc">';
 	$zOutput    .= '		<h2>'.$zTitre.'</h2>';
 	$zOutput    .= '			<div class="child"><p>';
