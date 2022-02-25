@@ -3602,21 +3602,17 @@ function getAlaUne(){
 											<img src="'.$zPhoto.'" alt="" />
 										</div>
 										<p>'.$zContenu.'</p>
-										<a href="'.get_permalink( $oAlaUne->ID ).'">'.pll__("lire la suite").'&gt;&gt;</a>
 									</div> ';
 
 					/*$zReturn  .= '												
-									<div class="txt">
-												<div class="imgPt Parent-image Parent-image11" style="margin-right: 17px;margin-bottom: 17px;">
-													<a href="'.$zPermalink.'" target="_blank" title="" class="image" style="background-image:url(\''.$zPhoto.'\')"></a>
-												</div>
-												<p class="titre"><a href="'.$zPermalink.'" target="_blank" title="">'.$zCatergorie.'</a></p>
-												<hr>
-												<h2><a href="#" title="">'.$zTitre.'</a></h2>
-												<p class="short">'.$zResume.'</p>
-												<p class="high">'.$zContenu.'</p>
-												<span class="lire">'.pll__("lire la suite").'&gt;&gt;</span>
-											</div> ';*/
+									<div class="item">
+										<div class="imgTitle">
+											<h2 class="blogTitle">'.$zCatergorie.'</h2>
+											<img src="'.$zPhoto.'" alt="" />
+										</div>
+										<p>'.$zContenu.'</p>
+										<!--<a href="'.get_permalink( $oAlaUne->ID ).'">'.pll__("lire la suite").'&gt;&gt;</a>
+									</div> ';*/
 			
 			
 
