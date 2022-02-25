@@ -111,8 +111,8 @@
     <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/includes/builder/scripts/jquery.fitvids591a.js?ver=3.0.51"></script>
     <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/includes/builder/scripts/waypoints.min591a.js?ver=3.0.51"></script>
     <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/includes/builder/scripts/jquery.magnific-popup591a.js?ver=3.0.51"></script>
-	<script src="<?php echo WP_CONTENT_URL?>/themes/cnfi/js/chaty-pro-front.js"></script>
-	<script src="<?php echo WP_CONTENT_URL?>/themes/cnfi/js/litespeed.js"></script> 
+	<!--<script src="<?php echo WP_CONTENT_URL?>/themes/cnfi/js/chaty-pro-front.js"></script>
+	<script src="<?php echo WP_CONTENT_URL?>/themes/cnfi/js/litespeed.js"></script> -->
 	<script src="<?php echo WP_CONTENT_URL?>/themes/cnfi/js/litespeed-media.js"></script>
     <script type="text/javascript">
 /* <![CDATA[ */
@@ -120,15 +120,67 @@ var et_pb_custom = {};
 /* ]]> */
 </script>
 <script type="text/javascript">
+
+	window.fbAsyncInit = function() {     
+		FB.init({
+			appId      : '680593872962701',
+			status     : true,
+			xfbml      : true
+		});
+	};
+
+	(function(d, s, id){
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) {return;}
+		js = d.createElement(s); js.id = id;
+		js.src = "http://connect.facebook.net/en_US/all.js";
+		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+
+	FB.ui({
+		method: 'feed',
+		name: 'Facebook Dialogs',
+		link: 'https://developers.facebook.com/docs/dialogs/',
+		picture: 'http://fbrell.com/f8.jpg',
+		caption: 'Reference Documentation',
+		description: 'Dialogs provide a simple, consistent interface for applications to interface with users.'
+	});
 	function fbShare(url, title, descr, image, winWidth, winHeight) {
-		/*alert(url + title +  descr +  image +  winWidth +  winHeight);*/
-        var winTop = (screen.height / 2) - (winHeight / 2);
-        var winLeft = (screen.width / 2) - (winWidth / 2);
-		var zLink = 'http://www.facebook.com/sharer.php?s=100&p[title]=' + title + '&p[summary]=' + descr + '&p[url]=' + url + '&p[images][0]=' + image + ',sharer top=' + winTop + ',left=' + winLeft + ',toolbar=0,status=0,width='+winWidth+',height='+winHeight;
-		/*alert(zLink);*/
-        window.open(zLink);
+		//alert(url + title +  descr +  image +  winWidth +  winHeight);
+        //var winTop = (screen.height / 2) - (winHeight / 2);
+        //var winLeft = (screen.width / 2) - (winWidth / 2);
+		/*var zLink = 'http://www.facebook.com/sharer.php?s=100&p[title]=' + title + '&p[summary]=' + descr + '&p[url]=' + url + '&p[images][0]=' + image + ',sharer top=' + winTop + ',left=' + winLeft + ',toolbar=0,status=0,width='+winWidth+',height='+winHeight;*/
+		/*var zLink = 'http://www.facebook.com/sharer.php?t=' + title + '&u=' + url + ',sharer top=' + winTop + ',left=' + winLeft + ',toolbar=0,status=0,width='+winWidth+',height='+winHeight;*/
+        /*window.open('http://www.facebook.com/sharer.php?u='+encodeURIComponent(url)+'&t='+encodeURIComponent(title)+',sharer top='+winTop+',left='+winLeft+',toolbar=0,status=0,width=626,height=436');*/
+		/*var zUrlShare = 'http://www.facebook.com/sharer.php?u='+encodeURIComponent(url)+'&t='+encodeURIComponent(title)+'&picture='+image;*/
+		/*var zUrlShare = 'http://www.facebook.com/sharer.php?s=100&p[url]='+url+'&p[external_img]=' + image + '&p[title]='+title+'&p[summary]=' + descr ;*/
+
+		/*var zUrlShare = 'http://www.facebook.com/dialog/feed?app_id=680593872962701' +
+        '&link=' + url + 
+        '&picture=' + image + 
+        '&name=' + encodeURIComponent(title) +
+        '&caption=' + encodeURIComponent(title) +
+        '&description=' + encodeURIComponent(descr) +
+        '&redirect_uri=' + url +
+        '&display=popup';*/
+
+		/*console.log(zUrlShare);*/
+
+		FB.ui({
+			method: 'feed',
+			name: title,
+			link: url,
+			picture: image,
+			caption: descr,
+			description: descr
+		});
+
+		/*var zUrlShare ='http://www.facebook.com/sharer.php?s=100&p[title]='+encodeURIComponent(title) + '&p[summary]=' + encodeURIComponent(descr) + '&p[url]=' + encodeURIComponent(url) + '&p[images][0]=' + encodeURIComponent(image) ;
+
+		window.open(zUrlShare, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+winWidth+', height='+winHeight+', top='+winTop+', left='+winLeft);*/
     }
 </script>
+
 <script>
     $(document).ready(function($) {
       /************ start owl-demo2 *****************/

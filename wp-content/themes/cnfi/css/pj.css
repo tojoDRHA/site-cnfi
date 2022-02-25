@@ -1386,7 +1386,7 @@ h2,.contBloc h3 span, .Blocmansory .bottom a, .wisiSoutenir h1{
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   height: 132px;
-  width: 68.5%;
+  /*width: 68.5%;*/
   position: relative;
 }
 .blocList .colFloat{

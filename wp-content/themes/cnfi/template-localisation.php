@@ -55,13 +55,13 @@
 								</div>
 							</div>
 							<div class="et_pb_column et_pb_column_1_3 " style="float:left;position:absolute;z-index:5000">
-								<div class="gf_browser_unknown  " id="gform_wrapper_3" >
-										<div class="gform_body">
+								<div class="gf_browser_unknown  " id="gform_wrapper_34" >
+										<div class="gform_body" style="position:absolute">
 												<!-- bloc en bleu -->
-												<div class="bloc blocBlue1">
+												<div class="bloc blocBlue">
 													<div class="imgPt Parent-image1">
 														<a href="#" title="" class="image"></a>
-														<div class="blocAbs">
+														<div class="blocAbs" style="position:relative">
 															<div class="txt">
 																<h2 class="center"><?php echo  pll_e("Recherche"); ?></h2>
 																<hr>

@@ -43,8 +43,12 @@
 	<script type='text/javascript' src='<?php echo WP_CONTENT_URL?>/themes/cnfi/js/jquery-1.11.3.min.js' id='script1-js'></script>
 	<script type='text/javascript' src='<?php echo WP_CONTENT_URL?>/themes/cnfi/js/bootstrap.min.js' id='bootstrap-script-js'></script>
 	<script type='text/javascript' src='<?php echo WP_CONTENT_URL?>/themes/cnfi/js/script.js' id='script-js'></script>
-	<link rel="stylesheet" type="text/css" href="<?php echo WP_CONTENT_URL?>/themes/cnfi/css/chaty-front.css?20220106162008">
-	<link rel="stylesheet" type="text/css" href="<?php echo WP_CONTENT_URL?>/themes/cnfi/css/chaty-front-css.css?20220106162008">
+	<!--<link rel="stylesheet" type="text/css" href="<?php echo WP_CONTENT_URL?>/themes/cnfi/css/chaty-front.css?20220106162008">
+	<link rel="stylesheet" type="text/css" href="<?php echo WP_CONTENT_URL?>/themes/cnfi/css/chaty-front-css.css?20220106162008">-->
+	<meta property="og:image:type" content="image/jpeg">
+	<meta property="og:image:width" content="480">
+	<meta property="og:image:height" content="283">
+	<meta property="og:image" content="http://192.168.0.199/CNFI/wp-content/uploads/2022/01/apimf.jpg">
   </head>
   <body class="home page-template-default page page-id-69 et_pb_button_helper_class et_fullwidth_secondary_nav et_fixed_nav et_show_nav et_cover_background et_secondary_nav_enabled et_secondary_nav_only_menu et_pb_gutter windows et_pb_gutters3 et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_pb_footer_columns4 et_header_style_centered et_pb_pagebuilder_layout et_right_sidebar et_cnfi_theme unknown">
     <div id="page-container">
@@ -59,7 +63,7 @@
           <div id="et-secondary-menu"> <br>
 				<ul id="et-secondary-nav" class="menu">
 				  <li class="lang-item lang-item-2 lang-item-fr lang-item-first" style="padding-top:25px;"><a><span></span></a></li>
-				  <li><?php pll_the_languages(array('show_flags'=>1,'show_names'=>1)); ?></li>
+				  <!--<li><?php pll_the_languages(array('show_flags'=>1,'show_names'=>1)); ?></li>-->
 				</ul>
           </div>
           <!-- #et-secondary-menu --> </div>

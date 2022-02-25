@@ -3604,6 +3604,19 @@ function getAlaUne(){
 										<p>'.$zContenu.'</p>
 										<a href="'.get_permalink( $oAlaUne->ID ).'">'.pll__("lire la suite").'&gt;&gt;</a>
 									</div> ';
+
+					/*$zReturn  .= '												
+									<div class="txt">
+												<div class="imgPt Parent-image Parent-image11" style="margin-right: 17px;margin-bottom: 17px;">
+													<a href="'.$zPermalink.'" target="_blank" title="" class="image" style="background-image:url(\''.$zPhoto.'\')"></a>
+												</div>
+												<p class="titre"><a href="'.$zPermalink.'" target="_blank" title="">'.$zCatergorie.'</a></p>
+												<hr>
+												<h2><a href="#" title="">'.$zTitre.'</a></h2>
+												<p class="short">'.$zResume.'</p>
+												<p class="high">'.$zContenu.'</p>
+												<span class="lire">'.pll__("lire la suite").'&gt;&gt;</span>
+											</div> ';*/
 			
 			
 
@@ -3711,7 +3724,7 @@ function getArchive(){
 							
 					$zTitre			= $oActusArchive->post_title;
 					$zContenu		= $oActusArchive->post_content; 
-					$bActusArchive		= get_field('a_la_une', $oActusArchive->ID);
+					$bActusArchive	  = get_field('a_la_une', $oActusArchive->ID);
 					$zDate			= get_field('date_actualite', $oActusArchive->ID);
 					$zPhoto			= get_field('photo_actu', $oActusArchive->ID);
 					$zCatergorie	= get_field('categorie_actu', $oActusArchive->ID);
@@ -3736,25 +3749,34 @@ function getArchive(){
 														<span class="lire">'.pll__("lire la suite").'&gt;&gt;</span>
 													</div>
 												</div> ';*/
+
+
+					/*
+						<ul class="share">     
+							 <li><a href="#" onClick="fbShare(\''.get_permalink( $oActusArchive->ID ).'\', \''.$zTitre.'\', \''.$zResume.'\', \''.$zPhoto.'\', 800, 600)" class="fb"></a></li>
+							 <li><a href="javascript:window.open(\'http%3A%2F%2Fwww.facebook.com%2Fshare.php%3Fu%3Dhttp%3A%2F%2Fferalmotion.com%2Fshare%3Fwatch%3Dfd5f0c2\', \'_blank\', \'width=400,height=500\');void(0);" class="tw"></a></li>
+							 <li><a href="#" class="gg"></a></li>
+						 </ul>
+					
+					*/
 			
 					$zReturn  .= '												
-									<div class="colFloat shadowListHome clearFix">
-													<div class="imgPt Parent-image">
-														<a href="#" title="" class="image" style="background-image:url(\''.$zPhoto.'\')"></a>
-													</div>
-													<div class="txt">
-														<p class="titre"><a href="#" title="">'.$zCatergorie.'</a></p>
-														<hr>
-														<h2><a href="#" title="">'.$zTitre.'</a></h2>
-														<p class="short1">'.$zResume.'</p>
-														<ul class="share">     
-															 <li><a href="#" onClick="fbShare(\''.get_permalink( $oActusArchive->ID ).'\', \''.$zTitre.'\', \''.$zResume.'\', \''.$zPhoto.'\', 800, 600)" class="fb"></a></li>
-															 <li><a href="#" class="tw"></a></li>
-															 <li><a href="#" class="gg"></a></li>
-														 </ul>
-														<span class="lire">'.pll__("lire la suite").'&gt;&gt;</span>
-													</div>
-												</div> ';
+									<div class="blocList warp">
+										<div class="colFloat shadowListHome clearFix">
+											<div class="txt">
+												<div class="imgPt Parent-image Parent-image11" style="margin-right: 17px;margin-bottom: 17px;">
+													<a href="'.$zPermalink.'" target="_blank" title="" class="image" style="background-image:url(\''.$zPhoto.'\')"></a>
+												</div>
+												<p class="titre"><a href="'.$zPermalink.'" target="_blank" title="">'.$zCatergorie.'</a></p>
+												<hr>
+												<h2><a href="#" title="">'.$zTitre.'</a></h2>
+												<p class="short">'.$zResume.'</p>
+												<p class="high">'.$zContenu.'</p>
+												<span class="lire">'.pll__("lire la suite").'&gt;&gt;</span>
+											</div>
+										</div> 
+									</div> 
+									';
 			
 				}
 			}
